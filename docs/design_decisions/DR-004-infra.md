@@ -31,7 +31,7 @@ So as you can see that decision was rather high-level and still allows multiple 
 
 ## Case Studies
 
-Instead of a generic approach, this DR starts with very concrete examples of pipelines that run external tools. The goal is to identify common patterns and then generalize them into a reusable framework.
+Instead of a generic approach, this DR starts with analysing existing and very concrete S-CORE examples of pipelines that run external tools. The goal is to identify common patterns and then generalize them into a reusable framework.
 
 ### Copyright Check
 
@@ -61,7 +61,7 @@ Is this too complicated? Let's disect the relevant requirements:
 - **Performance**: The script is fast, but bazel increases the CI runtime to two minutes.
 - **Low Friction** & **Maintenance Effort**: The local `copyright` target is very error-prone, Seems things could be simplified.
 
-Alternatives: should we discuss that here, or later after some examples?
+*Alternatives: should we discuss that here, or later after some examples?*
 
 ### License Check (Dash)
 
@@ -93,3 +93,5 @@ Let's again disect the relevant requirements:
 - **Version Pinning**: The jar file and all scripts are pinned via bazel, so we have version pinning.
 - **Performance**: The tool itself runs about 15 seconds, and bazel increases the CI runtime to 1-2 minutes.
 - **Low Friction** & **Maintenance Effort**: Seems it could be simplified.
+
+*So far it seems alternatives is a generic section. Need an example with a totally different tool?!*
