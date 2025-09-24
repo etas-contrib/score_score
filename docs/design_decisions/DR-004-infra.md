@@ -29,7 +29,7 @@ Regarding "normal tools" and pipelines the decision was:
 
 So as you can see that decision was rather high-level and still allows multiple ways to implement pipelines that run these tools in a consistent way (compared to local CLI, and IDE/editor integrations).
 
-## Case Studies
+## Current Status
 
 Instead of a generic approach, this DR starts with analysing existing and very concrete S-CORE examples of pipelines that run external tools. The goal is to identify common patterns and then generalize them into a reusable framework.
 
@@ -95,3 +95,39 @@ Let's again disect the relevant requirements:
 - **Low Friction** & **Maintenance Effort**: Seems it could be simplified.
 
 *So far it seems alternatives is a generic section. Need an example with a totally different tool?!*
+
+### Basic Linters (ruff, basedpyright, actionlint, spellcheck, yamlfmt, ...)
+
+* Tooling repo
+  * Provides a bazel multitool configuration (tool, version, hash tuples) for each tool.
+  * Python: ruff + basedpyright also have custom config files, which are provided via virtual environment support of score_python_basics macro.
+* Module repo
+  * Uses multitool + tooling repo to define bazel targets for each tool.
+  * Python: Uses score_python_basics to provide a python virtual environment with correct python version and local dependencies.
+
+Now we need to start differentiating by user:
+
+CLI / CI:
+  * Format
+    * uses format_test and format_multirun to define a common entry point for all linters.
+      Note: no support to pass a config.
+    * These bazel rules in turn need linter specific bazel rules to call the tools. (currently only ruff and yamlfmt are supported)
+  * Others
+    * in docs-as-code there is a [run-linters.sh](https://github.com/eclipse-score/docs-as-code/blob/main/scripts/run-linters.sh), which in turn calls the bazel targets for each tool.
+
+IDE:
+  * Python: score_python_basics virtual environment must be executed before starting the IDE. Then in should be possible to use ruff and basedpyright by proper configuration of `settings.json`. However, currently simply the IDE native extensions are used.
+  * Others: The IDE native extensions are used, as there is currently no way to provide the multitool binaries to the IDE.
+
+Note: only 1-2 repos have linters due to complexity of setup.
+
+Let's again disect the relevant requirements:
+
+- **Version Pinning**: yes, via multitool.
+- **Config Consistency**: Quite a mess at the moment.
+- **Performance**: tools execute in ~0.5 seconds + 3 minute bazel startup time.
+- **Offline & Retention**: Should be possible via multitool cache, but currently bazel is buggy in that area?!
+- **Platforms**: Great support via multitool.
+- **Low Friction**: IDE integration requires effort per tool. Latest idea was a local module specific shell script per tool.
+
+Note: this section contains a mix of tool provisioning, tool configuration and tool execution.
