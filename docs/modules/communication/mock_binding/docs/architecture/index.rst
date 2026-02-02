@@ -20,7 +20,7 @@ Mock Binding Component Architecture
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging
+   :uses: 
 
    .. needarch::
       :scale: 50

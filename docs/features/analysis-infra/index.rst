@@ -18,5 +18,4 @@ Analysis Infrastructure
 .. toctree::
    :maxdepth: 2
 
-   ./logging/index
    ./tracing/index

@@ -21,7 +21,7 @@ Frontend Component Architecture
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__communication__user
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :uses: , logic_arc_int__tracing__tracing
 
 
 .. comp_arc_sta:: mw::com Frontend Architecture
@@ -30,7 +30,7 @@ Frontend Component Architecture
    :safety:  ASIL_B
    :status: valid
    :implements: logic_arc_int__communication__user
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :uses: , logic_arc_int__tracing__tracing
 
    .. needarch::
       :scale: 50

@@ -66,7 +66,7 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :uses: , logic_arc_int__tracing__tracing
 
 
 .. comp_arc_sta:: Executor
@@ -74,7 +74,7 @@ The components are designed to cover the expectations from the feature architect
    :security: YES
    :safety:  ASIL_B
    :status: valid
-   :uses: logic_arc_int__logging__logging, logic_arc_int__tracing__tracing
+   :uses: , logic_arc_int__tracing__tracing
 
    .. needarch::
       :scale: 50

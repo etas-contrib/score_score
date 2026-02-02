@@ -13,8 +13,8 @@
    # *******************************************************************************
 
 .. mod_view_sta:: Logging
-   :id: mod_view_sta__logging__logging
-   :includes: comp_arc_sta__logging__logging
+   :id: mod_view_sta__logging__logging_tmp
+   :includes: comp_arc_sta__logging__logging_tmp
 
    .. needarch::
       :scale: 50

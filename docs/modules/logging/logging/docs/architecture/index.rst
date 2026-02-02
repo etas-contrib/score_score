@@ -16,11 +16,11 @@ Component Architecture
 **********************
 
 .. comp_arc_sta:: Logging
-   :id: comp_arc_sta__logging__logging
+   :id: comp_arc_sta__logging__logging_tmp
    :security: YES
    :safety: ASIL_B
    :status: valid
-   :implements: logic_arc_int__logging__logging
+   :implements: logic_arc_int__log_cpp__logging_tmp
 
    .. needarch::
       :scale: 50
@@ -29,7 +29,7 @@ Component Architecture
       {{ draw_component(need(), needs) }}
 
 .. logic_arc_int:: Logging
-   :id: logic_arc_int__logging__logging
+   :id: logic_arc_int__log_cpp__logging_tmp
    :security: YES
    :safety:  ASIL_B
    :status: valid
@@ -41,8 +41,8 @@ Component Architecture
       {{ draw_interface(need(), needs) }}
 
 .. logic_arc_int_op:: Log
-   :id: logic_arc_int_op__logging__isenabled
+   :id: logic_arc_int_op__logging__isenabled_tmp
    :security: YES
    :safety: QM
    :status: valid
-   :included_by: logic_arc_int__logging__logging
+   :included_by: logic_arc_int__log_cpp__logging_tmp
