@@ -12,11 +12,12 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-Analysis Infrastructure
-#######################
+Logging
+#######
 
 .. toctree::
-   :maxdepth: 2
-   
-   ./logging/index
-   ./tracing/index
+   :maxdepth: 1
+
+   ./mw-fr_logging.rst
+   ./docs/requirements/mw-fr_logging_req.rst
+   ./docs/glossary.rst
