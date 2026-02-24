@@ -76,8 +76,9 @@ bazel_dep(name = "score_tooling", version = "1.0.4")
 bazel_dep(name = "score_docs_as_code", version = "2.3.3")
 git_override(
      module_name = "score_docs_as_code",
-     commit = "8cd9b194921122e345b03aa78d7a421164abaa37",
+     commit = "9132272642711b06a8f3f6e07183506e0f9e4603",
      remote = "https://github.com/etas-contrib/score_docs-as-code.git",
 )
+
 
 bazel_dep(name = "score_process", version = "1.4.2")
