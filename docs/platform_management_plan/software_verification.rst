@@ -263,7 +263,64 @@ Test Derivation Methods
      - 1 Unit/Component, 2 Feature Integration, -
      - QM, ASIL B
 
-The ``fuzz-testing`` should especially be taken into account to increase security of the software.
+Security Testing Approaches
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the functional and safety-focused testing methods defined above, security-specific testing approaches are applied throughout the verification lifecycle to address threat model findings and security requirements:
+
+**Security-Focused Static Analysis**
+
+* Static code analysis per ISO 26262 part 6, extended with security-specific checks (CERT, CWE rules)
+* CodeQL and Clang-Tidy security rules applied to all code
+* Vulnerability scanning of dependencies via GitHub Dependabot and Software Composition Analysis (SCA) tools
+* Results tracked and resolved with security priority per :doc:`vulnerability_management`
+
+**Fuzzing Testing**
+
+Fuzz testing (Fuzzy Testing per test derivation methods) is utilized as a security testing technique to identify:
+
+* Buffer overflows and heap corruption
+* Integer overflows and underflows
+* Input validation weaknesses
+* API contract violations
+
+Fuzz testing tools for S-CORE:
+.. ToDo: are these tools already integrated? If not, we can keep the following as a plan for future integration.
+
+* **C++ Fuzz Testing**: libFuzzer or honggfuzz integrated in CI/CD pipeline
+* **Rust Fuzz Testing**: cargo-fuzz (libFuzzer-based) integrated in CI/CD pipeline
+
+Fuzz test harnesses and configurations are maintained in the test suite with coverage reporting.
+
+**Threat-Based Security Testing**
+
+Security test cases are derived from threat analysis findings per :doc:`security_management`:
+
+* Threat Model identification of attack vectors and security weaknesses
+* Test case generation targeting identified threats (e.g., injection attacks, authorization bypass, cryptographic failures)
+* Evidence collection linking threats → security requirements → test cases → verification results
+* Continuous update of threat model with new vulnerability findings
+
+**Secure API Testing**
+
+For all public APIs, security-focused interface testing verifies:
+
+* Input validation and rejection of invalid/malicious inputs
+* Authentication and authorization enforcement
+* Secure error handling (no information leakage)
+* Rate limiting and DoS resistance where applicable
+* Secure defaults and configuration validation
+
+**SBOM Verification**
+
+For all official releases, the Software Bill of Materials (SBOM) is verified to ensure:
+
+* Completeness of dependency list (all direct and transitive dependencies included)
+* Accuracy of component versions, hashes, and metadata
+* License compliance for all dependencies
+* Known vulnerabilities flagged per CVE databases
+
+SBOM verification checklists and procedures are documented per :need:`wp__sw_platform_sbom`.
 
 For non-safety-critical(QM) software parts, you can generally reduce the rigor of the
 testing approaches, but cannot omit them completely. It may be possible to reduce the

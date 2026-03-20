@@ -165,8 +165,69 @@ development, as the respective methods are not used:
 :need:`std_req__iso26262__support_11473`, :need:`std_req__iso26262__support_11474`,
 :need:`std_req__iso26262__support_11481`, :need:`std_req__iso26262__support_11482`,
 :need:`std_req__iso26262__support_11483`, :need:`std_req__iso26262__management_6456`
+Security Tools
+^^^^^^^^^^^^^^
 
+In addition to the above tool management approach applicable to all tools, the following security-specific tools require evaluation and qualification for secure software development:
 
+**Static Application Security Testing (SAST)**
+
+* **CodeQL** (GitHub Advanced Security) - Semantic code analysis for C++ and Rust to detect security vulnerabilities
+  - Tool confidence level assessment per security analysis qualification process
+  - Security rules configuration and customization for S-CORE context
+  - Integration in CI/CD pipeline with enforced blocking for critical findings
+
+* **Clang-Tidy Security Rules** - C++ static analysis for CERT and CWE security rules
+  - Configuration of security check sets relevant to automotive embedded systems
+  - Integration with build system for automated execution
+  - Tool qualification documenting rule selection and false positive rates
+
+**Software Composition Analysis (SCA)**
+
+* **GitHub Dependabot** - Automated vulnerability detection in dependencies
+  - Already integrated as GitHub Advanced Security feature
+  - Continuous monitoring of disclosed vulnerabilities (CVE feeds)
+  - Automatic generation of pull requests for security updates
+
+* **OWASP Dependency-Check** (under evaluation per `#244 <https://github.com/eclipse-score/score/issues/244>`_)
+  - Additional SCA tool evaluation for enhanced coverage
+  - Vulnerability database aggregation from multiple sources
+  - License compliance scanning for dependencies
+  - Tool qualification in progress
+
+**Fuzzing Tools**
+
+* **libFuzzer** (C++) - Coverage-guided fuzzing for C++ code
+  - Integration in build system (Bazel build targets for fuzz tests)
+  - Continuous fuzzing via OSS-Fuzz or similar infrastructure
+  - Crash reporting and triage process
+
+* **cargo-fuzz** (Rust) - Rust-specific fuzzing based on libFuzzer
+  - Integration in Rust project build configuration
+  - Fuzz test harness development guidance
+  - Coverage reporting and regression testing
+
+**Secret Scanning**
+
+* **GitHub Advanced Security - Secret Scanning**
+  - Detection of exposed credentials, API keys, tokens in repositories
+  - Automated alerting and remediation workflow
+  - Configuration of patterns for S-CORE-specific secret types
+
+**SBOM Generation**
+
+* **S-CORE SBOM Tool** - Automated Software Bill of Materials generation
+  - Bazel dependency graph extraction for complete supply chain visibility
+  - SPDX 2.3 and CycloneDX 1.6 format support
+  - CISA 2025 minimum elements compliance
+  - Integration in release pipeline per :need:`wp__sw_platform_sbom`
+
+Each security tool undergoes the standard Tool Management process (Identification → Evaluation → Qualification → Approval) with additional security-specific threat analysis addressing:
+
+* Impact of tool malfunction on security requirements (false negatives/positives)
+* Detection capability for identified vulnerability classes (CWE, CVSS)
+* Configuration and customization for S-CORE development context
+* Integration with development workflow without introducing security gaps
 Tool List
 ^^^^^^^^^
 

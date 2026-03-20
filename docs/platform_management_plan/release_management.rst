@@ -16,7 +16,7 @@
    :id: doc__platform_release_management_plan
    :status: draft
    :safety: ASIL_B
-   :security: NO
+   :security: YES
    :tags: platform_management
    :realizes: wp__platform_sw_release_plan
 
@@ -88,6 +88,54 @@ Major version updates denote API incompatibility, so the modules in a platform r
 major version.
 
 For the release execution follow the steps described in :ref:`module_release_manual`.
+
+Security Considerations
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Security is an integral aspect of the release process and must be considered throughout release planning and execution.
+
+**Pre-Release Security Review**
+
+Before every official release, a security review is performed as part of the release gate criteria:
+
+* Verification of all security-relevant requirements being implemented and tested
+* Review of security advisories and CVE reports for dependencies used in the release
+* Confirmation that all identified vulnerabilities have been resolved or documented
+* Approval by the :need:`rl__security_manager` for security readiness
+
+**SBOM Generation and Inclusion**
+
+Software Bill of Materials (SBOM) is generated for all official releases per :need:`wp__sw_platform_sbom` using the S-CORE SBOM tool.
+The SBOM includes:
+
+* Complete list of all direct and transitive dependencies
+* Component versions as used in the release build
+* Licensing information (SPDX expressions)
+* Supplier and component metadata per CISA 2025 minimum elements
+* SHA-256 hashes for integrity verification
+
+The SBOM is included as an artifact in the release and referenced in the release notes.
+
+**Vulnerability Disclosure Coordination**
+
+In the event that security vulnerabilities are discovered shortly before or after a release:
+
+* The :need:`rl__security_manager` coordinates with the :need:`rl__project_lead` regarding vulnerability impact
+* Security advisories are prepared following the :doc:`vulnerability_management` process
+* Release notes are updated to include security acknowledgments if applicable
+* Critical security patches may trigger out-of-cycle releases per the vulnerability response plan
+
+**Release Notes Security Information**
+
+Official release notes include a Security section documenting:
+
+* Security requirements implemented in this release
+* Security fixes and vulnerability resolutions
+* Known security limitations or assumptions
+* Recommended upgrade timeline for security-relevant updates
+* SBOM location and access information
+
+For details on vulnerability management and security response processes, see :doc:`vulnerability_management`.
 
 Identification
 ^^^^^^^^^^^^^^

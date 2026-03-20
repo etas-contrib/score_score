@@ -109,6 +109,23 @@ Adherence is verified by automated checks and manual inspections.
 All the aspects of ISO SAE 21434 are directly implemented in the development process to ensure a proper communication and high understanding of security.
 With continuous improvements, an integral aspect in all processes, we want to achieve excellence.
 
+Safety-Security Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Functional safety and security are complementary disciplines with distinct but interrelated objectives. While functional safety addresses hazardous behaviors caused by failures, security addresses malicious or unintended interference with the system's functionality. Their interaction is managed through coordinated processes and shared responsibilities.
+
+The project acknowledges the critical need to address the safety and security interface. To this end, the following measures are implemented:
+
+* Regular collaboration between the security and safety teams to identify and assess potential interactions between security vulnerabilities and safety mechanisms.
+* Integration of security considerations into safety analyses and threat assessments, including impact assessments to ensure that security weaknesses are not exploited to violate safety requirements.
+* Alignment of security and safety requirements in the development lifecycle, with traceability between security requirements and safety-relevant controls.
+* Participation in cross-functional reviews and audits to ensure that both security and safety requirements are addressed and that any conflicts are resolved.
+* Continuous monitoring of emerging security threats and updating the security plan accordingly; update the safety plan only if safety-related impacts are identified.
+
+The project is committed to maintaining an integrated approach to safety and security. Security controls are validated to ensure they do not compromise safety mechanisms, and safety mechanisms are designed with security considerations in mind.
+This approach ensures that security is not treated in isolation, but as an integral part of the platform's overall strategic safety and security posture.
+The safety management aspects are defined in the :doc:`safety_management`.
+
 Security Management Organization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -122,7 +139,7 @@ The project will be under the Eclipse Foundation and so the `Eclipse Foundation 
 * `Committers <https://www.eclipse.org/projects/handbook/#contributing-committers>`_ play the main development role in the project, as only these are allowed to merge, so they are the ultimate responsible for the project's repository content.
 * `Eclipse Foundation Security Team <https://www.eclipse.org/projects/handbook/#vulnerability-team>`_ provides help and advice to Eclipse projects on security issues and is the first point of contact for handling security vulnerabilities.
 
-*Project Roles*
+Project Roles*
 
 Roles are defined in every process and in a generic roles section. All those are matched to Eclipse roles.
 Project role assignment is done in every feature development Security Plan.
@@ -211,14 +228,18 @@ Examples for valid escalation causes are:
 * Security issues cannot be resolved on module level or with the available resources.
 * There are conflicting points of view between the Project Lead :need:`rl__project_lead`, Safety Manager :need:`rl__safety_manager`, Security Manager :need:`rl__security_manager` and the Quality Manager :need:`rl__quality_manager`
 
-Security Management Lifecycle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Security Management Life Cycle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The security lifecycle of the S-CORE project is initiated at the project set-up and driven and maintained by the security manager supported by the :need:`rl__process_community`.
 Note that the Eclipse Foundation also defines `project phases <https://www.eclipse.org/projects/handbook/#starting-project-phases>`_.
 Eclipse definition is more about the process maturity for the whole project, if we are in Mature Phase, we latest will have the project lifecycle as defined in our process description.
 Nevertheless, Security Development and even Security Package release is independent from Mature and Incubation Phase as the completeness and appropriateness of the platform process and artifacts
 is determined by Security Audit and not be Eclipse project reviews.
+The S-CORE project implements the ISO SAE 21434 security lifecycle, covering only phases relevant to software OoC development in the automotive and embedded systems context.
+All omitted phases are justified and documented in the Tailoring section.
+All security activities, planning, and evidence generation are tracked via the Platform Security Plan, Module Security Plans, and associated GitHub Issues.
+This approach ensures compliance with ISO SAE 21434, while integrating threat analysis, secure development, security verification, and continuous vulnerability management throughout the lifecycle.
 
 Security Requirements
 ^^^^^^^^^^^^^^^^^^^^^

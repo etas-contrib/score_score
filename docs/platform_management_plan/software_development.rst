@@ -108,7 +108,43 @@ Coding guidelines
 
 **C++** - see :need:`doc__cpp_coding_guidelines`
 
+This includes adherence to secure coding practices including CERT C++ Secure Coding standards and MISRA C++ security rules to mitigate common vulnerabilities (CWE coverage).
+Code must be reviewed for compliance with secure coding guidelines including input validation, buffer overflow prevention, and proper resource management.
+
 **Rust** - see :need:`doc__rust_coding_guidelines`
+
+This includes secure Rust coding practices with emphasis on safe memory management. For safety-critical code, the compiler-enforced "safe subset" (no unsafe code) must be maintained.
+All usage of `unsafe` blocks in non-safety-critical code requires security justification and code review.
+
+Secure Development Practices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In addition to the coding guidelines above, the following security-focused development practices are mandatory:
+
+**Static Security Analysis**
+
+* Code must pass security-focused static analysis tools including CodeQL (via GitHub Advanced Security)
+* Clang-Tidy is configured with security checks enabled for C++ projects
+* All identified security vulnerabilities must be resolved before merge
+* Suppression of legitimate security warnings requires documented justification
+
+**Dependency Management & Software Composition Analysis**
+
+* All third-party dependencies are scanned for known vulnerabilities using GitHub Dependabot
+* Dependency updates addressing security vulnerabilities must be prioritized and applied promptly
+* For official releases, Software Bill of Materials (SBOM) is generated per :need:`wp__sw_platform_sbom` to provide complete supply chain visibility
+* License compliance is verified as part of dependency management per :doc:`quality_management`
+
+**Secure Code Review**
+
+* Code review includes verification of secure coding guideline adherence
+* Security-relevant architectural decisions require security team consultation
+
+**Threat Modeling & Security Analysis**
+
+* Security analysis is applied at feature and module development level as defined in :doc:`security_management`
+* Design reviews address potential security weaknesses in architecture and interfaces
+* Results of threat analysis drive security test case development per :doc:`software_verification`
 
 SW configuration guideline
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,8 +170,17 @@ set up. It's also possible to report there Security vulnerabilities. GitHub Acti
 as a support for continuous integration.
 
 The following GitHub features are activated to improve security :need:`doc__platform_vulnerability_mgt_plan` and quality for software development:
-* **GitHub Dependabot** - Automated dependency vulnerability detection and update pull requests
-* **GitHub Advanced Security** - Code scanning and secret scanning capabilities where available (CodeQL)
+* **GitHub Dependabot** - Automated dependency vulnerability detection and update pull requests for supply chain security
+* **GitHub Advanced Security** - Code scanning via CodeQL and secret scanning capabilities for identifying security vulnerabilities and exposed credentials
+
+.. rubric:: Static Security Analysis & SCA
+
+Beyond the compiler-provided warnings and GitHub Advanced Security, additional static analysis and Software Composition Analysis tools are evaluated and integrated:
+
+* **CodeQL** (GitHub Advanced Security) - Semantic code analysis to detect security vulnerabilities and code quality issues in C++ and Rust
+* **SBOM Generation** - S-CORE SBOM tool for generating software bills of materials in SPDX/CycloneDX formats per **wp__sw_platform_sbom**
+
+Tool qualifications and configuration are documented in :doc:`tool_management`.
 
 .. rubric:: Sphinx
 
