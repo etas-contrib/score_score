@@ -113,7 +113,7 @@ Process Management
     :derived_from: stkh_req__overall_goals__enable_cooperation[version==1]
 
     The :term:`Lifecycle Feature` shall be compliant to the `OCI Specification v1.2.0 <https://github.com/opencontainers/runtime-spec/releases/tag/v1.2.0>`__.
-
+    (->stkh_req__platform_principles__std_based_interoperability)
 
 Run targets
 -----------

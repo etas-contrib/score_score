@@ -25,8 +25,86 @@ Stakeholder Requirements
    :safety: ASIL_B
    :realizes: wp__requirements_stkh[version==1]
 
-Overall goals
--------------
+Platform Principles (pf_princ)
+------------------------------
+
+Application Portability
+^^^^^^^^^^^^^^^^^^^^^^^
+.. stkh_req:: Application Portability with API Stability
+   :id: stkh_req__pf_princ__app_portability
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: Stable application-facing APIs reduce application migration effort and enable independent evolution of applications and platform implementations.
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The SW-platform shall enable application software to be reused across
+   supported platform variants and releases by providing stable, managed,
+   and versioned application-facing APIs.
+
+
+Standards-based Interoperability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Standards-based Interoperability
+    :id: stkh_req__pf_princ__std_based_interop
+    :reqtype: Non-Functional
+    :security: NO
+    :safety: QM
+    :rationale: tbd
+    :status: valid
+    :version: 1
+    :valid_from: v1.0.0
+
+    The SW-platform shall use established and openly specified standards
+    where they enable interoperability and avoid unnecessary platform-specific
+    dependencies.
+
+Variant Management
+^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Platform Variant management
+   :id: stkh_req__plf_princ__variant_management
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The SW-platform shall support the management of platform and application
+   variants while maintaining defined compatibility across supported vehicle
+   variants and software releases.
+   Further Details might be derived later:
+   * configuration variants
+   * build variants
+   * deployment variants
+   * vehicle variants
+   * API compatibility
+   * feature activation
+
+Intellectual Property Protection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Intellectual Property Protection
+   :id: stkh_req__plf_princ__ip_protection
+   :reqtype: Non-Functional
+   :security: NO
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v2.0.0
+
+   The SW-platform shall enable software components from different parties to
+   be integrated, deployed, and operated without requiring disclosure of
+   protected implementation details to other integration partners.
+
+Overall goals (to be deleted)
+-----------------------------
 
 .. stkh_req:: Reuse of application software via managed APIs
    :id: stkh_req__overall_goals__reuse_of_app_soft
@@ -41,7 +119,7 @@ Overall goals
    The SW-platform shall enable the reuse of application software via a set of managed APIs.
    These APIs shall be developed via a well-defined life-cycle ensuring
    non-breaking changes.
-
+   (->stkh_req__platform_principles__app_portability)
 
 .. stkh_req:: Enable cooperation via standardized APIs
     :id: stkh_req__overall_goals__enable_cooperation
@@ -54,6 +132,7 @@ Overall goals
     :valid_from: v1.0.0
 
     The SW-platform shall where possible be based on existing standards (e.g. network protocols).
+    (->stkh_req__plf_princ__app_portability)
 
 .. stkh_req:: Variant management
     :id: stkh_req__overall_goals__variant_management
@@ -69,7 +148,7 @@ Overall goals
     Variant management support shall enable users to ensure the
     compatibility of application software across vehicle variants and vehicle
     software releases.
-
+    (-> stkh_req__pf_princ__variant_management)
 
 .. stkh_req:: IP protection
    :id: stkh_req__overall_goals__ip_protection
@@ -84,8 +163,48 @@ Overall goals
    The SW-platform shall support cooperation models, where partners do not
    want to disclose their intellectual property of applications to all other
    partners.
+   (-> stkh_req__pf_princ__ip_protection)
 
 
+Application Enablement (app_ena)
+--------------------------------
+
+Application Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^
+.. stkh_req:: Externalized Application Configuration
+   :id: stkh_req__app_ena__externalized_app_config
+   :reqtype: Functional
+   :security: NO
+   :safety: QM
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :valid_from: v1.0.0
+
+   The SW-platform shall support externalized application configuration
+   that can be changed without rebuilding the application software.
+
+Persistent Data
+^^^^^^^^^^^^^^^
+
+Safety-relevant Data
+^^^^^^^^^^^^^^^^^^^^
+.. stkh_req:: Safety-relevant Persistent Data
+   :id: stkh_req__app_ena__safe_per_data
+   :reqtype: Functional
+   :security: NO
+   :safety: ASIL_B
+   :rationale: tbd
+   :status: valid
+   :version: 1
+   :tags: safety_mechanism
+   :valid_from: v1.0.0
+
+   The SW-platform shall support integrity-protected persistent data storage
+   for safety-relevant applications up to the supported safety integrity level.
+
+Common Platform Services
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Functional requirements
 -----------------------
@@ -101,6 +220,7 @@ Functional requirements
    :valid_from: v1.0.0
 
    The SW-platform shall support configuration of applications via files (e.g. yaml, json)
+   (->stkh_req__app_ena__externalized_app_config)
 
 .. stkh_req:: Support of safe Key/Value store
    :id: stkh_req__functional_req__support_of_store
@@ -114,6 +234,8 @@ Functional requirements
    :valid_from: v1.0.0
 
    The SW-platform shall provide towards the applications a safe key/value store.
+   (-> stkh_req__app_ena__safe_per_data)
+
 
 .. stkh_req:: Safe Configuration
    :id: stkh_req__functional_req__safe_config
@@ -923,10 +1045,13 @@ Communication
    * Diagnostic trouble codes
    * Diagnostic jobs
 
-Time
-----
+Time Service (time)
+-------------------
 
-.. stkh_req:: Vehicle Time base Synchronization
+Vehicle Time Synchronization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Vehicle Time Synchronization
    :id: stkh_req__time__vehicle_time_sync
    :reqtype: Functional
    :security: NO
@@ -938,7 +1063,11 @@ Time
 
    The SW-platform shall provide a framework to synchronize its local vehicle clock representation to a Time Master within the vehicle.
 
-.. stkh_req:: Vehicle Time base API
+Vehicle Time API
+^^^^^^^^^^^^^^^^
+
+
+.. stkh_req:: Vehicle Time API
    :id: stkh_req__time__vehicle_time_api
    :reqtype: Functional
    :security: NO
@@ -955,7 +1084,11 @@ Note (providing tracebility as long as safety analysis is not available):
    :need:`stkh_req__time__vehicle_time_api` requires backing by :need:`aou_req__platform__veh_time_e2e_integrity`
    to guarantee end-to-end data integrity.
 
-.. stkh_req:: Synchronize the HW clock with Vehicle Time
+
+Hardware Clock Synchronization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: HW Clock Synchronization
    :id: stkh_req__time__hw_clock_sync
    :reqtype: Functional
    :security: NO
@@ -967,7 +1100,11 @@ Note (providing tracebility as long as safety analysis is not available):
 
    The SW-platform shall synchronize the local HW clock to vehicle time.
 
-.. stkh_req:: Time Synchronization with external sources
+
+Absolute Time Synchronization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Absolute Time Synchronization
    :id: stkh_req__time__absolute_time_sync
    :reqtype: Functional
    :security: YES
@@ -978,6 +1115,9 @@ Note (providing tracebility as long as safety analysis is not available):
    :valid_from: v1.0.0
 
    The SW-platform shall provide a framework to synchronize its local absolute clock representation to an external-to-vehicle absolute time base (e.g. UTC).
+
+Absolute Time API
+^^^^^^^^^^^^^^^^^
 
 .. stkh_req:: Absolute time base API
    :id: stkh_req__time__absolute_time_api
@@ -992,7 +1132,10 @@ Note (providing tracebility as long as safety analysis is not available):
    The SW-platform shall provide access to the absolute time base, synchronized with external time sources.
    Access shall be free from interferences for the consuming components.
 
-.. stkh_req:: Local High Resolution Clock API
+High-resolution Clock API
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: High Resolution Clock API
    :id: stkh_req__time__high_res_clock_api
    :reqtype: Functional
    :security: NO
@@ -1011,7 +1154,10 @@ Note (allowing tracebility as long as safety analysis is not available):
    :need:`stkh_req__time__high_res_clock_api` requires backing by :need:`aou_req__platform__os_safety_functions`
    to guarantee FFI and clock data integrity on OS and HW level.
 
-.. stkh_req:: Local Monotonic Clock API
+Monotonic Clock API
+^^^^^^^^^^^^^^^^^^^
+
+.. stkh_req:: Monotonic Clock API
    :id: stkh_req__time__monotonic_clock_api
    :reqtype: Functional
    :security: NO
@@ -1639,3 +1785,145 @@ SW element(s) or due to dependency on HW. This is confirmed during safety analys
    :style: table
    :columns: title; id; tags
    :colwidths: 30,30,30
+
+
+..
+   Execution and Lifecycle Management
+   ----------------------------------
+
+   Application Lifecycle
+   Time-triggered Execution
+   Data-driven Execution
+   Request-driven Execution
+   Coordinated Execution
+   Real-time Execution
+   Short Execution Cycles
+   Power Management
+
+
+   Communication and Data Exchange
+   -------------------------------
+
+   Technology-independent Communication
+   Intra-process Communication
+   Inter-process Communication
+   Network Communication
+   Efficient / Zero-copy Data Exchange
+   Communication Extensibility
+   Automotive Communication Interoperability
+   Communication QoS
+
+
+   Time Services
+   -------------
+
+   Vehicle Time Synchronization
+   Vehicle Time API
+   Hardware Clock Synchronization
+   Absolute Time Synchronization
+   Absolute Time API
+   High-resolution Clock API
+   Monotonic Clock API
+
+
+   Dependability
+   -------------
+
+   Functional Safety
+   ^^^^^^^^^^^^^^^^^
+
+   Safety Application Support
+   Freedom from Interference
+   Fault Detection
+   Fault Reporting and Reaction
+   Program Flow Supervision
+   Safe Startup and Shutdown
+   Safe Communication
+
+   Security
+   ^^^^^^^^
+
+   Identity and Access Control
+   Platform Integrity
+   Secure Communication
+   Credential Protection
+   Secure Update
+   Security Monitoring
+
+   Availability
+   ^^^^^^^^^^^^
+
+   Availability Support
+   Health Management
+   Recovery
+
+
+   Diagnostics and Fault Management
+   --------------------------------
+
+   Diagnostic Access
+   Fault Reporting
+   Diagnostic Data Access
+   Diagnostic Extensibility
+   Legacy UDS Interoperability
+   Distributed Diagnostics
+   Secure Diagnostic Access
+
+
+   Platform Portability and Deployment
+   -----------------------------------
+
+   Operating-system Portability
+   Processor Architecture Portability
+   Virtual Target Execution
+   Application Deployment Isolation
+   Hardware Acceleration
+
+
+   AI and Machine Learning
+   -----------------------
+
+   AI/ML Workload Execution
+   Safety-related AI/ML
+   AI/ML Runtime Efficiency
+   AI/ML Portability
+   AI Model Security
+   AI Resource Management
+   AI Model Lifecycle
+   AI Observability
+   Generative AI
+   Controlled GenAI Actions
+   Vehicle Integration
+
+
+   Development, Test and Observability
+   -----------------------------------
+
+   Development Environment
+   Interface Definition
+   Application Testability
+   Simulation and Reprocessing
+   Debugging
+   Logging
+   Execution Tracing
+   Communication Tracing
+   Memory Tracing
+   Performance Analysis
+   Timing Analysis
+
+
+   Integration and Delivery
+   ------------------------
+
+   Multi-repository Integration
+   Continuous Integration
+   Deployment
+
+
+   Engineering Quality
+   -------------------
+
+   Requirements as Code
+   Requirements Traceability
+   Architecture Decisions
+   Assumptions

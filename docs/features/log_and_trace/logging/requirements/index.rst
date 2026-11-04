@@ -591,6 +591,7 @@ Logging Requirements
    The logging :term:`framework` shall be :term:`DLT` compatible.
 
    Additional Information: support for DLT message format, sending and receiving DLT messages, and integration with existing DLT tools and infrastructure.
+   (->stkh_req__platform_principles__std_based_interoperability)
 
 .. feat_req:: Security - Log File Access
    :id: feat_req__logging__security_log_access

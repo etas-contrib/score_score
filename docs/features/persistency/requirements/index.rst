@@ -64,6 +64,8 @@ Persistency Requirements
    :valid_from: v1.0.0
 
    The Persistency shall ensure compatibility across different SW versions.
+   (tbd: stkh_req__overall_goals__variant_management -> stkh_req__platform_principles__variant_management)
+
 
 .. feat_req:: Dynamic memory allocation during runtime
    :id: feat_req__persistency__dynamic_memory_alloc
@@ -539,9 +541,12 @@ Persistency Requirements
    :valid_from: v2.0.0
 
    The Persistency shall implement mechanisms to upgrade from one version to another, including multi-version jumps.
+   (tbd: stkh_req__overall_goals__variant_management -> stkh_req__platform_principles__variant_management)
 
    .. Note::
       Persisted data is written by one version of the software and later read by a newer version, whose data layout may have changed.
+
+
 
 .. feat_req:: Random access time
    :id: feat_req__persistency__fast_access

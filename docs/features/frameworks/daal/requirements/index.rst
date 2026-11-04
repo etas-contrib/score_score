@@ -43,6 +43,7 @@ General
    :valid_from: v2.0.0
 
    Lifecycle of executables should use one generic API
+   (->stkh_req__platform_principles__application_portability)
 
 .. feat_req:: Execution Environments
    :id: feat_req__daal__env
