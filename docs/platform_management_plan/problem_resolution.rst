@@ -12,85 +12,99 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Problem Resolution Plan
+.. document:: PF Problem Resolution Plan
    :id: doc__platform_problem_resolution_plan
    :status: draft
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
    :realizes: wp__prm_plan[version==1]
 
-Problem Resolution / Problem Resolution Plan
---------------------------------------------
+Problem Resolution Plan
+=======================
 
-This document implements parts of the :need:`wp__platform_mgmt`.
+This document implements parts of :need:`wp__platform_mgmt`.
+
 
 Purpose
-+++++++
-The purpose of the Problem Resolution is to guide the resolution of project problems including
-their creation, analysis, resolution, and control. Where a problem is defined as a deviation of an
-expected result.
+-------
+
+The purpose of Problem Resolution is to define how project problems are reported, analyzed,
+resolved, monitored, and closed.
+
+A problem is defined as a deviation from an expected result.
 
 
 Objectives and Scope
-++++++++++++++++++++
+--------------------
 
 Problem Resolution Goals
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Problems are recorded, identified and classified.
-* Problems are analyzed and assessed to determine an appropriate solution.
-* Problem resolutions are initiated and monitored.
-* Problem resolutions are closed and communicated to affected parties.
+The Problem Resolution process ensures that:
+
+* Problems are recorded, uniquely identified, and classified.
+* Problems are analyzed and assessed to determine an appropriate resolution.
+* Problem resolution activities are initiated and monitored.
+* Problem resolutions are verified before closure.
+* Closure and relevant results are communicated to affected parties.
+
 
 Approach
-++++++++
+--------
 
 Problem Resolution Execution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Contributions in general to the **S-CORE** project are described here
-(compare :need:`doc__contr_guideline`).
+General contributions to the **S-CORE** project are described in
+:need:`doc__contr_guideline`.
 
-A Problem Resolution is a specific contribution, and
-it is the **ONLY** way to report problems in the **S-CORE** project.
+Problem Resolution is a specific type of contribution. Problems in **S-CORE** shall be
+reported and managed exclusively through the Problem Resolution process described in this
+document.
+
 
 Problem Resolution Infrastructure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:need:`GitHub Issues (ISSUE) <doc__issue_guideline>` are used for managing problems and their
-potential resolution. The tool is used to create, analyze, initiate and to monitor the
-problem reported within **S-CORE**.
+:need:`GitHub Issues (ISSUE) <doc__issue_guideline>` are used to manage Problem Reports and
+their resolution. They provide the central mechanism for reporting, analyzing, planning,
+tracking, and closing problems within **S-CORE**.
 
-The next figure gives an overview, how problems are created in **S-CORE**. An ISSUE is
-used to create a problem report including required attributes as defined in the
-:need:`Problem Process Requirements <gd_req__problem_attr_uid>`.
+The following figure provides an overview of how problems are reported and managed in
+**S-CORE**. A GitHub Issue is used as the Problem Report and contains the attributes required
+by :need:`Problem Process Requirements <gd_req__problem_attr_uid>`.
 
 .. figure:: _assets/score_problem_resolution_overview.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Problem Resolution Overview
+   :width: 100%
+   :align: center
+   :alt: Problem Resolution Overview
 
-Therefore the Problem Template :need:`gd_temp__problem_template` shall be used.
+The Problem Report template :need:`gd_temp__problem_template` shall be used when creating a
+Problem Report.
 
 .. note::
-  The template is automatically included in the ISSUE **Problem Report**.
-  Use ISSUE **Problem Report** to report a detected problem in **S-CORE**.
 
-  .. figure:: _assets/score_problem_resolution_report.drawio.svg
-    :width: 100%
-    :align: center
-    :alt: Problem Resolution Overview
+   The template is automatically provided when creating an ISSUE of type **Problem Report**.
+   Use this ISSUE type whenever a problem is reported in **S-CORE**.
+
+   .. figure:: _assets/score_problem_resolution_report.drawio.svg
+      :width: 100%
+      :align: center
+      :alt: Problem Report
+
 
 Problem Resolution Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Problem Problem Resolution Process Requirements are implemented as follows:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:need:`[[title]] <gd_req__problem_attr_uid>` is identical to the ISSUE number.
+The Problem Resolution Process Requirements are implemented as follows.
 
-:need:`[[title]] <gd_req__problem_attr_status>` is defined by the combination of the ISSUE state
-and the state in the Projects dashboard view. The PR status is also used, if applicable.
+:need:`[[title]] <gd_req__problem_attr_uid>` is represented by the ISSUE number.
+
+:need:`[[title]] <gd_req__problem_attr_status>` is represented by the combination of the
+ISSUE state and the Projects dashboard status. Where applicable, the status of linked PRs is
+also considered.
 
 .. list-table:: Problem Status
    :header-rows: 1
@@ -103,11 +117,11 @@ and the state in the Projects dashboard view. The PR status is also used, if app
    * - open
      - ``Open``
      - ``No Status``
-     - na
+     - n/a
    * - in review
      - ``Open``
      - ``Todo``
-     - na
+     - n/a
    * - in implementation
      - ``Open``
      - ``In Progress``
@@ -118,45 +132,55 @@ and the state in the Projects dashboard view. The PR status is also used, if app
      - ``Merged``
    * - rejected
      - ``Closed as not planned``
-     - na
-     - na
+     - n/a
+     - n/a
 
-:need:`[[title]] <gd_req__problem_attr_title>` is identical to the ISSUE title.
+:need:`[[title]] <gd_req__problem_attr_title>` is represented by the ISSUE title.
 
-:need:`[[title]] <gd_req__problem_attr_impact_description>` is provided in the Description
-part of the ISSUE. Add here the root cause and impact of the problem. Optionally state, who
-has to be informed or notified, if applicable, e.g. Safety Manager of a feature.
+:need:`[[title]] <gd_req__problem_attr_impact_description>` is documented in the
+**Description** section of the ISSUE. This section shall describe the problem, its identified
+or suspected root cause, and its impact. Where applicable, affected parties that may require
+notification shall also be identified, for example the Safety Manager of an affected feature.
 
-Record whether notification is needed and why, including if not needed, in the Problem
-notifications part of the ISSUE. Identify affected parties. If notification is needed,
-record who was notified, when and how, e.g. a link to an issue comment with an explicit
-mention or another communication reference. Listing a recipient alone does not record a
-performed notification. For suspected vulnerabilities, follow the project's confidential
-reporting policy.
+The **Problem notifications** section shall document whether notification is required and the
+rationale for that decision, including when notification is not required. If notification is
+required, the affected parties and the performed notification shall be recorded, including
+who was notified, when, and through which communication mechanism.
 
-Further information can be provided in the Supporting Information part of the ISSUE. Especially
-"How to reproduce" and "Error occurrence Rate" shall be documented, thus extra parts are provided
-for that in the ISSUE.
+A recipient listed without evidence of the notification does not constitute a performed
+notification.
 
-To identify, in which version the problem occurred, use the Affected Version
-part of the ISSUE.
+Suspected security vulnerabilities shall be handled according to the project's confidential
+vulnerability reporting process.
+
+Additional information can be documented in the **Supporting Information** section of the
+ISSUE. In particular, information on **How to reproduce** and **Error occurrence rate**
+should be provided using the dedicated sections of the Problem Report.
+
+The **Affected Version** section identifies the version in which the problem occurs.
 
 :need:`[[title]] <gd_req__problem_attr_affected_versions>` additionally requires the first and
-last affected versions, including versions derived from the faulty version, to be documented.
-Record unknown affected versions as "under investigation" and update them during analysis.
+last affected versions, including versions derived from a faulty version, to be documented.
+If the affected versions are not yet known, they shall be recorded as ``under investigation``
+and updated as part of the analysis.
 
-To provide solutions, use the Solution part of the ISSUE.
+Potential and selected resolutions are documented in the **Solution** section of the ISSUE.
 
-:need:`[[title]] <gd_req__problem_attr_analysis_results>` is provided in the analysis
-results part of the ISSUE. State here, if the problem is accepted or rejected. (Platform and/or Module)
-Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly
+:need:`[[title]] <gd_req__problem_attr_analysis_results>` is documented in the
+**Analysis Results** section of the ISSUE. The analysis shall state whether the problem is
+accepted or rejected. Where safety or security may be affected, the responsible Platform
+and/or Module Safety/Security Manager shall confirm the corresponding assessment.
 
-:need:`[[title]] <gd_req__problem_attr_stakeholder>` are provided in the Assignees part of
-the ISSUE. In addition you can use pre-defined labels for Communities or Feature Teams
-(Feature Owner) (under discussion, compare https://github.com/eclipse-score/score/issues/870).
+:need:`[[title]] <gd_req__problem_attr_stakeholder>` is represented by the ISSUE assignees.
+Predefined labels may additionally be used to identify responsible Communities or Feature
+Teams and their Feature Owners.
 
-:need:`[[title]] <gd_req__problem_attr_classification>` is provided in the Classification
-part of the ISSUE. Select one of provided identifiers:
+The corresponding Feature Team labeling concept is currently under discussion in
+https://github.com/eclipse-score/score/issues/870.
+
+:need:`[[title]] <gd_req__problem_attr_classification>` is documented in the
+**Classification** section of the ISSUE. One of the following classifications shall be
+selected:
 
 .. list-table:: Problem Classification
    :header-rows: 1
@@ -173,141 +197,197 @@ part of the ISSUE. Select one of provided identifiers:
    * - blocker
      - ``blocker``
 
+:need:`[[title]] <gd_req__problem_attr_safety_affected>` and
+:need:`[[title]] <gd_req__problem_attr_security_affected>` are documented in the
+**Category** section of the ISSUE.
 
-:need:`[[title]] <gd_req__problem_attr_safety_affected>`,
-:need:`[[title]] <gd_req__problem_attr_security_affected>` are provided in the Category
-part of the ISSUE.
+Multiple categories may apply. If neither safety nor security is selected, the problem is
+treated as quality-related by default.
 
-Combinations of them are allowed. If nothing is selected, Quality is affected by default.
+If safety is affected, the applicable ASIL shall be documented in the **ASIL Classification**
+section of the ISSUE, for example ``ASIL_B``.
 
-Use the ASIL classification part of the ISSUE to document the ASIL level concerned, e.g. ASIL_B.
-
-
-:need:`[[title]] <gd_req__problem_attr_milestone>` is provided in the Expected Closure
-Version part of the ISSUE. Optionally the Milestone part of the ISSUE can be set.
+:need:`[[title]] <gd_req__problem_attr_milestone>` is represented by the
+**Expected Closure Version**. The ISSUE Milestone may additionally be used for planning and
+tracking.
 
 
 Problem Resolution Workflow
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In general, every Problem Resolution follows the following steps:
+Every Problem Resolution follows four main steps:
 
-(color is referring to the following figure: Problem Resolution Simple Workflow Overview)
+1. Create the Problem Report.
+2. Analyze the Problem Report.
+3. Initiate and monitor the Problem Resolution.
+4. Verify and close the Problem Resolution.
 
-* 1. Create the Problem report (grey color)
-* 2. Analyze the Problem report (blue color)
-* 3. Initiate the implementation of the Problem Resolution and track it to closure (yellow color)
-* 3. Close Problem Resolution (purple color)
+The colors used in the following workflow figure correspond to these steps:
 
-:need:`gd_guidl__problem_problem` can give additional help.
+* grey: Problem Report creation
+* blue: analysis
+* yellow: implementation and monitoring
+* purple: verification and closure
 
-**To 1. Create the Problem Report:**
+:need:`gd_guidl__problem_problem` provides additional guidance.
 
-An ISSUE is the **ONLY** way to create and manage a Problem in **S-CORE**.
 
-The figure below shows the workflow for the simplest case of a Problem Resolution workflow.
+1. Create the Problem Report
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An ISSUE **Problem Report** with the type ``Bug`` is created in status ``Open``.
-The title of the ISSUE reflects the potential problem. Further fill out the provided template
-content accordingly.
+An ISSUE of type **Problem Report** is the authoritative mechanism for reporting and tracking
+a problem within **S-CORE**.
 
-Planning is done by setting the **Expected Closure Version**. Optionally the Milestone of the ISSUE
-can be set.
+The figure below shows the basic Problem Resolution workflow.
 
-Problem status: ``open`` is implemented as
-ISSUE status ``Open`` and Projects status ``No Status``.
+The Problem Report is created with ISSUE type ``Bug`` and initial ISSUE state ``Open``.
+The ISSUE title shall clearly identify the potential problem, and the Problem Report template
+shall be completed with all information available at the time of reporting.
 
-To trigger the next step: Problem status: ``in review``
-keep the ISSUE status ``Open`` and set the Projects status ``Todo``.
+Planning information is captured by setting the **Expected Closure Version**. The ISSUE
+Milestone may additionally be set where appropriate.
 
-To reject the problem report: Problem status: ``rejected``
-set the ISSUE status to ``Closed as not planned``.
+The initial Problem Resolution status ``open`` is represented by:
+
+* ISSUE state ``Open``
+* Projects status ``No Status``
+
+To move the Problem Report to ``in review``:
+
+* keep the ISSUE state ``Open``; and
+* set the Projects status to ``Todo``.
+
+If the reported problem is rejected:
+
+* set the ISSUE state to ``Closed as not planned``.
 
 .. figure:: _assets/score_problem_resolution_workflow_simple.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Problem Resolution Simple Workflow Overview
+   :width: 100%
+   :align: center
+   :alt: Problem Resolution Simple Workflow Overview
 
-  Problem Resolution Simple Workflow Overview
-
-
-**To 2. Analyze the Problem Report:**
-
-The Problem Report is reviewed and analyzed from the :need:`Committer <rl__committer>` and the
-review results are resolved by the :need:`Contributor <rl__contributor>`. The results
-are documented in the ISSUE. As long as the information is not sufficient, the related ISSUE is
-kept in status ``Open`` and Projects status ``Todo``, means ``in review``.
-
-If the information is sufficient and it is decided to initiate the problem resolution, the
-ISSUE status is kept ``Open`` and the Projects status is set to ``In Progress``.
-
-The decision, if the problem is accepted or rejected must be documented. (Platform and/or Module)
-Safety/Security Manager must confirm or deny, if safety/security is affected is set correctly.
-
-:need:`gd_chklst__problem_cr_review` can help to verify whether the information is complete.
-
-In case affected parties need to be informed :need:`Project Lead <rl__project_lead>` or
-:need:`Feature Team Lead <rl__delivery_team>` will notify them.
-
-On platform level, the Project Lead will be added to the assignees of the ISSUE as well as the
-Platform Safety Manager and/or Security Manager and/or Quality Manager, if applicable.
-
-Notifications will be done for Feature Teams (:ref:`pmp_pm_feature_teams`) by
-
-- adding the Feature Team Lead to the assignees of the ISSUE and by
-- adding optionally the Module Safety Manager and/or Security Manager and/or Quality Manager, if applicable, to the assignees of the ISSUE and by
-- adding the Feature Team label to the ISSUE
-
-In addition, whether notification was needed and, if so, who was notified, when and how must be
-recorded in the Problem notifications part of the ISSUE.
-
-Otherwise, if no Problem Resolution is planned, the problem is rejected. To reject the Problem
-Report: Problem status: ``rejected`` set the ISSUE status to ``Closed as not planned``.
+   Problem Resolution Simple Workflow Overview
 
 
-**To 3. Initiate and Monitor the Problem Resolution:**
+2. Analyze the Problem Report
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:need:`Contributor <rl__contributor>` starts all required activities to resolve the problem.
-These may include starting Change Requests or in general planning activities by creating ISSUEs and
-required PRs.
+The Problem Report is reviewed and analyzed by a
+:need:`Committer <rl__committer>`. Identified findings and requested clarifications are
+addressed by the :need:`Contributor <rl__contributor>` and documented in the ISSUE.
 
-All ISSUEs or PRs created to resolve the problem are linked to the Problem Report ISSUE to enable
-monitoring of the activities.
+While the available information is insufficient to make a resolution decision, the Problem
+Report remains:
 
-All activities defined are tracked until closure, means that all linked ISSUEs or PRs are closed or
-merged, respectively.
+* ISSUE state ``Open``
+* Projects status ``Todo``
+* Problem Resolution status ``in review``
 
-If all are closed or merged :need:`Contributor <rl__contributor>` sets Projects status to
-``Done`` to trigger the final review from the :need:`Committer <rl__committer>` to close
-the Problem Resolution.
+Once sufficient information is available and the problem is accepted for resolution, the
+Problem Report is moved to:
 
-The Problem Resolution may also rejected in this phase, then the ISSUE status is set to
-``Closed as not planned``.
+* ISSUE state ``Open``
+* Projects status ``In Progress``
+* Problem Resolution status ``in implementation``
 
-**To 4. Close the Problem Resolution:**
+The decision to accept or reject the problem shall be documented in the ISSUE.
 
-:need:`Committer <rl__committer>` checks finally if the problem is completely resolved. In
-this case all linked ISSUEs or PRs are closed or merged, respectively.
+Where safety or security may be affected, the responsible Platform and/or Module
+Safety/Security Manager shall confirm the corresponding assessment.
 
-Especially the solution measures must be checked for their effectiveness and the argumentation
-is convincing.
+:need:`gd_chklst__problem_cr_review` can be used to verify that the Problem Report contains
+the information required to proceed.
 
-Where safety is affected, :need:`[[title]] <gd_req__problem_check_safety_closure>` requires a
-rationale supporting either an implemented safety measure with verified effectiveness, or an
-evaluation that the problem does not constitute an unreasonable risk. Per
-:need:`[[title]] <gd_req__problem_check_safety_rationale>` this rationale and its review result
-must be documented.
+If affected parties require notification, the
+:need:`Project Lead <rl__project_lead>` or
+:need:`Feature Team Lead <rl__delivery_team>` is responsible for ensuring that the required
+notification is performed.
 
-:need:`gd_chklst__problem_cr_review` can help to verify whether it can be closed.
+For platform-level problems, the Project Lead shall be added as an assignee. Depending on the
+problem category, the Platform Safety Manager, Security Manager, and/or Quality Manager shall
+also be assigned.
 
-If this is the case the ISSUE status is set to ``Closed``, otherwise the Projects status is set
-back to ``In Progress``.
+For affected Feature Teams (:ref:`pmp_pm_feature_teams`), notification and responsibility are
+established by:
+
+* adding the Feature Team Lead as an assignee;
+* adding the Module Safety Manager, Security Manager, and/or Quality Manager as applicable;
+* adding the corresponding Feature Team label to the ISSUE.
+
+The **Problem notifications** section shall additionally record whether notification was
+required and, where applicable, who was notified, when, and how.
+
+If no Problem Resolution is to be initiated, the problem is rejected by setting the ISSUE
+state to ``Closed as not planned``.
+
+
+3. Initiate and Monitor the Problem Resolution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The :need:`Contributor <rl__contributor>` initiates the activities required to resolve the
+problem. Depending on the required changes, these activities may include Change Requests,
+additional ISSUEs, planning activities, and PRs.
+
+All ISSUEs and PRs created as part of the resolution shall be linked to the Problem Report
+to provide traceability and enable monitoring of the resolution activities.
+
+The resolution activities are tracked until all linked ISSUEs are closed and all relevant
+PRs are merged or otherwise resolved.
+
+Once all resolution activities are completed, the
+:need:`Contributor <rl__contributor>` sets the Projects status to ``Done``. This triggers the
+final verification by the :need:`Committer <rl__committer>`.
+
+A Problem Resolution may also be rejected during this phase. In this case, the rationale
+shall be documented and the ISSUE state shall be set to ``Closed as not planned``.
+
+
+4. Verify and Close the Problem Resolution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The :need:`Committer <rl__committer>` performs the final verification that the problem has
+been completely resolved.
+
+All linked resolution activities shall have been completed. In particular, linked ISSUEs
+shall be closed and relevant PRs shall be merged or otherwise resolved.
+
+The effectiveness of the implemented resolution measures shall be evaluated and the
+corresponding rationale documented.
+
+Where safety is affected,
+:need:`[[title]] <gd_req__problem_check_safety_closure>` requires a rationale demonstrating
+either:
+
+* that an implemented safety measure is effective; or
+* that the problem does not constitute an unreasonable risk.
+
+According to :need:`[[title]] <gd_req__problem_check_safety_rationale>`, both the rationale
+and its review result shall be documented.
+
+:need:`gd_chklst__problem_cr_review` can be used to support the final completeness and closure
+review.
+
+If the closure criteria are fulfilled:
+
+* set the Projects status to ``Done``; and
+* set the ISSUE state to ``Closed``.
+
+If the closure criteria are not fulfilled, the Projects status shall be set back to
+``In Progress`` and the required resolution activities shall continue.
 
 
 Problem Resolution SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Problem Reports are published in the :need:`wp__issue_track_system`.
-S-CORE and its modules use GitHub Issues with the same templates and in the same location per default.
-If deviating the module has to document this in an own Problem Resolution Plan.
-S-CORE platform repository issues (Problem Reports are tagged with the Label "Bug") see `here <https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug>`_
+Problem Reports constitute the Problem Resolution records published through
+:need:`wp__issue_track_system`.
+
+By default, the **S-CORE** platform and its modules use GitHub Issues, the common Problem
+Report template, and the same Problem Resolution mechanism described in this document.
+
+A module that deviates from this process, tooling, or template shall document the deviation
+in its own Problem Resolution Plan.
+
+Problem Reports for the S-CORE platform repository are identified by the ``Bug`` label:
+
+`S-CORE Problem Reports <https://github.com/eclipse-score/score/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug>`_
