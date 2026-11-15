@@ -12,163 +12,227 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Tool Management Plan
+.. document:: PF Tool Management Plan
    :id: doc__platform_tool_management_plan
    :status: valid
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
    :realizes: wp__tlm_plan[version==1]
 
 
-Tool Management / Tool Management Plan
---------------------------------------
+PF Tool Management Plan
+=======================
 
-This document implements parts of the :need:`wp__platform_mgmt`.
+This document implements parts of :need:`wp__platform_mgmt`.
+
 
 Purpose
-+++++++
-The purpose of the Tool Management Plan is to guide the identification, evaluation and, if
-applicable, the qualification (safe and secure use) of Tools for the S-CORE project.
+-------
 
-S-CORE guideline is to use as much as possible Tools for the generation of all required work
-products. Thus all Tools which will be used as part of the tool chain for the work product
-generation must be identified, documented and evaluated and if applicable, qualified.
+The purpose of the Tool Management Plan is to define how software tools used within the
+S-CORE project are identified, evaluated, and, where required, qualified for safe and secure
+use.
+
+S-CORE makes extensive use of tools to support and automate the generation, verification,
+and management of work products. Therefore, tools that are part of the toolchain and may
+affect the generation or verification of work products shall be identified, documented,
+and evaluated. Where required by the evaluation result, the tool shall additionally be
+qualified.
 
 
 Objectives and Scope
-++++++++++++++++++++
+--------------------
 
 Tool Management Goals
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
-* Tools are identified and documented
-* Tools are evaluated
-* Tools are qualified, if applicable
-* Tool Verification Reports are released
+The Tool Management process ensures that:
+
+* Tools are identified and documented.
+* Tools are evaluated with respect to their intended use.
+* Tools are qualified where required.
+* Tool Verification Reports are reviewed and released.
+
 
 Approach
-++++++++
+--------
+
+Tool Management consists of four main stages:
+
+1. Identification
+2. Evaluation
+3. Qualification, where required
+4. Approval
+
+The following figure provides an overview of the Tool Management process.
 
 .. figure:: _assets/score_tool_management_overview.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Tool Management Overview
+   :width: 100%
+   :align: center
+   :alt: Tool Management Overview
+
 
 Tool Management Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-:need:`gd_req__tool_attr_uid` are implemented as follows:
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The requirements defined by :need:`gd_req__tool_attr_uid` are implemented as described
+in the following sections.
 
 
 Identification
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
-Each tool is identified by its name or UID and its version, independent where it is located.
+Each tool shall be uniquely identified by its name or UID and its version, independent of
+where the tool is hosted or maintained.
 
-The most important tools are stored in one GitHub repository,
-`tooling repository <https://GitHub.com/eclipse-score/tooling/>`_.
+The main S-CORE tooling is maintained in the
+`S-CORE tooling repository <https://GitHub.com/eclipse-score/tooling/>`_.
+Tools may, however, also be hosted and maintained in other repositories or locations.
 
-But in general Tool can be stored all over the place.
+For each tool, :need:`gd_temp__tool_management_verif_rpt_template` shall be used to document
+the information required for Tool Management.
 
-For each Tool the :need:`gd_temp__tool_management_verif_rpt_template` shall be used to document
-the relevant information.
+:need:`gd_chklst__tool_cr_review` shall be used to verify that all required information has
+been considered.
 
-:need:`gd_chklst__tool_cr_review` shall be used to check that all relevant information is considered.
+Tool versions and tool configurations are managed according to
+:need:`doc__platform_config_mgt_plan`.
 
-The configuration of tools is part of the :need:`doc__platform_config_mgt_plan`.
-
-The output after this stage is the :need:`wp__tool_verification_report` in status: `identified`.
+The output of the Identification stage is a
+:need:`wp__tool_verification_report` with status ``identified``.
 
 
 Evaluation
-^^^^^^^^^^
+~~~~~~~~~~
 
-The tool confidence level (TCL) must be determined as outlined in the
+The Tool Confidence Level (TCL) shall be determined as defined in
 :need:`doc_concept__tool_process`.
 
-Step-by-Step guide:
+The evaluation consists of the following steps:
 
-1. Determine the tool impact
-2. Determine the tool error detection
-3. Determine the tool confidence level
+1. Determine the Tool Impact.
+2. Determine the Tool Error Detection.
+3. Determine the Tool Confidence Level.
 
 .. figure:: _assets/score_tool_management_evaluation.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: Tool Evaluation
+   :width: 100%
+   :align: center
+   :alt: Tool Evaluation
 
-**To Step 1**
 
-Based on the found malfunctions or threats judge, if any safety or security requirements may violated.
-If this is the case, determine tool impact to "YES" otherwise to "NO".
+Step 1: Determine the Tool Impact
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If tool impact is "NO", continue with 3, otherwise 2.
+Based on the identified potential tool malfunctions and security threats, assess whether
+a tool malfunction or threat could lead to the violation of a safety or security requirement.
 
-**To Step 2**
+If such a violation is possible, Tool Impact shall be set to ``YES``.
+Otherwise, Tool Impact shall be set to ``NO``.
 
-Based on the malfunctions or threats found, assess whether these can be detected or prevented.
-Consider also potential safety measures and security controls to increase the detection and
-prevention of these, if applicable.
-If there is no guarantee to either detect or prevent these, judge tool error detection to "NO",
-otherwise to "YES".
+If Tool Impact is ``NO``, continue with Step 3.
+Otherwise, continue with Step 2.
 
-**To Step 3**
 
-If tool impact is judged to "YES" and tool error detection judged to "NO", the tool confidence
-level is determined to "LOW", otherwise "HIGH".
+Step 2: Determine the Tool Error Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case the tool confidence level is "LOW", tool qualification is required.
+For the identified potential tool malfunctions and security threats, assess whether they
+can be reliably detected or prevented.
 
-The output after this stage is the :need:`wp__tool_verification_report` in status: `evaluated`.
+Existing or additional safety measures and security controls may be considered where they
+increase the ability to prevent or detect the identified malfunction or threat.
+
+If the identified malfunctions or threats cannot be reliably detected or prevented,
+Tool Error Detection shall be set to ``NO``.
+
+Otherwise, Tool Error Detection shall be set to ``YES``.
+
+
+Step 3: Determine the Tool Confidence Level
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Tool Confidence Level shall be determined from Tool Impact and Tool Error Detection.
+
+If Tool Impact is ``YES`` and Tool Error Detection is ``NO``, the Tool Confidence Level
+shall be set to ``LOW``.
+
+In all other cases, the Tool Confidence Level shall be set to ``HIGH``.
+
+A Tool Confidence Level of ``LOW`` requires Tool Qualification.
+
+The output of the Evaluation stage is a
+:need:`wp__tool_verification_report` with status ``evaluated``.
+
 
 Qualification
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
-As method "validation of software tool" is applied.
+Where Tool Qualification is required, the method **validation of the software tool** is
+applied.
 
-Specify requirements for the tools purpose and usage in the S-CORE context.
-Analyze the malfunctions and threats and specify additional safety measures and security controls
-to increase the prevention and detection of them.
-Specify test cases and tests to verify the requirements and generate a test report.
-Update the Tool Verification Report accordingly to document the outcomes.
+The qualification shall:
 
-For the generation of requirements, verification and analyses the existing processes as defined
-in the :need:`wp__platform_mgmt` shall be used.
+* specify requirements for the intended purpose and use of the tool within S-CORE;
+* analyze relevant tool malfunctions and security threats;
+* define additional safety measures and security controls where required;
+* define verification measures and test cases for the tool requirements;
+* execute the required verification and tests;
+* document the verification and test results; and
+* update the Tool Verification Report with the qualification results.
 
-In detail:
+The existing S-CORE processes defined in :need:`wp__platform_mgmt` shall be used for
+requirements engineering, verification, and analyses.
 
-* Use :need:`wf__req_comp_req` to create requirements for the software tool and :need:`wf__monitor_verify_requirements` for the verification
+In particular:
 
-* Use :need:`wf__verification_comp_int_test` to test the requirements for the software tool and :need:`wf__verification_mod_ver_report` to report
+* Use :need:`wf__req_comp_req` to define requirements for the software tool and
+  :need:`wf__monitor_verify_requirements` to verify the requirements.
 
-* If applicable, use for the Analyses: (to be added, after Safety/Security Analyses have been merged)
+* Use :need:`wf__verification_comp_int_test` to define and execute tests for the software
+  tool and :need:`wf__verification_mod_ver_report` to document the verification results.
 
-The output after this stage is the :need:`wp__tool_verification_report` in status: `qualified`.
+* Where applicable, use the corresponding Safety and Security Analysis workflows.
+  (To be added after the Safety/Security Analysis processes have been merged.)
+
+The output of the Qualification stage is a
+:need:`wp__tool_verification_report` with status ``qualified``.
+
 
 Approval
-^^^^^^^^
+~~~~~~~~
 
-Finally the tool may accepted for the S-CORE project. Thus the Tool Verification Report after this
-stage is the :need:`wp__tool_verification_report` in status: `released`.
+Following evaluation and, where required, qualification, the tool shall undergo final
+approval for its intended use within S-CORE.
 
-If not, the tool is rejected, thus Tool Verification Report after this
-stage is the :need:`wp__tool_verification_report` in status: `rejected`.
+If the tool is accepted for its intended use, the
+:need:`wp__tool_verification_report` shall be set to status ``released``.
+
+If the tool is not accepted for its intended use, the
+:need:`wp__tool_verification_report` shall be set to status ``rejected``.
+
 
 Tailoring
-^^^^^^^^^
-Tailoring of safety activities for confidence in the use of software tools:
+~~~~~~~~~
 
-The following ISO 26262 defined safety requirements are not relevant for the S-CORE SW platform
-development, as the respective methods are not used:
+The following tailoring applies to the safety activities for establishing confidence in
+the use of software tools.
 
-:need:`std_req__iso26262__support_11471`, :need:`std_req__iso26262__support_11472`,
-:need:`std_req__iso26262__support_11473`, :need:`std_req__iso26262__support_11474`,
-:need:`std_req__iso26262__support_11481`, :need:`std_req__iso26262__support_11482`,
-:need:`std_req__iso26262__support_11483`, :need:`std_req__iso26262__management_6456`
+The following ISO 26262 requirements are not applicable to S-CORE software platform
+development because the corresponding methods are not used:
+
+:need:`std_req__iso26262__support_11471`,
+:need:`std_req__iso26262__support_11472`,
+:need:`std_req__iso26262__support_11473`,
+:need:`std_req__iso26262__support_11474`,
+:need:`std_req__iso26262__support_11481`,
+:need:`std_req__iso26262__support_11482`,
+:need:`std_req__iso26262__support_11483`,
+:need:`std_req__iso26262__management_6456`.
 
 
 Tool List
-^^^^^^^^^
+~~~~~~~~~
 
-The S-CORE tools overview can be found here: :ref:`tools`
+The overview of tools managed within S-CORE is provided in :ref:`tools`.
