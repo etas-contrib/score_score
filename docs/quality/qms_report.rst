@@ -379,8 +379,8 @@ Quality Management Generic work products
       - :ndf:`copy('status', need_id='doc__stakeholder_requirements')`
 
     * - :need:`wp__sw_development_plan`
-      - :need:`doc__software_development_plan`
-      - :ndf:`copy('status', need_id='doc__software_development_plan')`
+      - :need:`doc__platform_software_development_plan`
+      - :ndf:`copy('status', need_id='doc__platform_software_development_plan')`
 
     * - :need:`wp__tailoring_work_products`
       - :need:`doc__platform_quality_plan`

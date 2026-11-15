@@ -316,7 +316,7 @@ These may be interface testing or resource usage evaluation, in case there is an
 sufficient freedom from interference with safety critical software parts.
 
 Static code analysis is part of the :need:`wp__sw_implementation`. It is supported by tooling as mentioned in
-the :need:`doc__software_development_plan`
+the :need:`doc__platform_software_development_plan`
 
 As an additional measure the resource usage evaluation ``resource-usage`` should also be considered
 for level 3 (software platform level) testing as this is the level executed also on reference hardware with the integrated
@@ -513,7 +513,7 @@ The goal is to have all tests with linked ``valid`` requirements executed and pa
 Static code analysis
 ^^^^^^^^^^^^^^^^^^^^
 Static code analysis is performed to ensure compliance with coding standards and to identify potential issues early in the development process.
-The respective tools (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__software_development_plan`.
+The respective tools (e.g. GitHub CodeQL) used for static analysis are mentioned in the :need:`doc__platform_software_development_plan`.
 
 Violations identified by the static code analysis tools are categorized based on their severity.
 

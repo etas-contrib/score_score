@@ -400,8 +400,8 @@ Functional Safety/Security Management SW Platform Work Products
 
     * - :need:`wp__sw_development_plan`
       - :ndf:`copy('status', need_id='wf__sw_development_plan')`
-      - :need:`doc__software_development_plan`
-      - :ndf:`copy('status', need_id='doc__software_development_plan')`
+      - :need:`doc__platform_software_development_plan`
+      - :ndf:`copy('status', need_id='doc__platform_software_development_plan')`
 
     * - :need:`wp__verification_plan`
       - :ndf:`copy('status', need_id='wf__verification_plan')`
