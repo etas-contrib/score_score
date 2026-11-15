@@ -21,8 +21,8 @@
    :tags: platform_management
    :realizes: wp__prm_plan[version==1]
 
-Problem Resolution Plan
-=======================
+PF Problem Resolution Plan
+===========================
 
 This document implements parts of :need:`wp__platform_mgmt`.
 
