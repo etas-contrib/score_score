@@ -391,8 +391,8 @@ Quality Management Generic work products
       - :ndf:`copy('status', need_id='doc__platform_tool_management_plan')`
 
     * - :need:`wp__verification_plan`
-      - :need:`doc__verification_plan`
-      - :ndf:`copy('status', need_id='doc__verification_plan')`
+      - :need:`doc__platform_software_verification_plan`
+      - :ndf:`copy('status', need_id='doc__platform_software_verification_plan')`
 
     * - :need:`wp__verification_platform_int_test`
       - :ref:`project_documents_list`

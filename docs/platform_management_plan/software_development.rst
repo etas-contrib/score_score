@@ -262,7 +262,7 @@ evaluation, or qualification according to the project's safety and quality
 processes.
 
 Verification-specific tools are additionally addressed by
-:need:`doc__verification_plan`.
+:need:`doc__platform_software_verification_plan`.
 
 Static and dynamic code-analysis methods and tools are described in
 :need:`doc__cpp_code_analysis`.

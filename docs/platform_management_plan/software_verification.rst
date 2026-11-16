@@ -12,10 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Software Verification Plan
-   :id: doc__verification_plan
+.. document:: PF Software Verification Plan
+   :id: doc__platform_software_verification_plan
    :status: valid
-   :version: 1
+   :version: 2
    :safety: ASIL_B
    :security: YES
    :tags: platform_management
@@ -24,181 +24,254 @@
 
 .. _software_verification_plan:
 
-Software Verification Plan
-**************************
+PF Software Verification Plan
+=============================
 
 Purpose
-=======
+-------
 
-The present document describes the plan for software integration and verification of the project. It intends to give
-an overview by linking to other relevant sources and provide further information about the verification and testing
-activities.
+This document defines the software integration and verification plan for the S-CORE project. It provides an overview
+of the applicable verification activities, methods, responsibilities, quality objectives, and supporting processes,
+and links to the corresponding detailed specifications and guidance.
 
-Main purpose of this document is to show the objectives, approaches, and strategies that are defined to contribute to
-the overall quality of the software project. The target groups of this document are mainly :need:`rl__contributor`
-and :need:`rl__committer`.
+Its primary purpose is to define the objectives, approaches, and strategies used to establish and maintain confidence
+in the quality of the S-CORE software platform throughout development and release.
 
+The primary target audiences are :need:`rl__contributor` and :need:`rl__committer`.
 Objectives and scope
-====================
+--------------------
 
 Objectives
-----------
+~~~~~~~~~~
 
-The overall objectives of the projects software integration and verification activities are the following:
+The software integration and verification activities pursue the following objectives:
 
-#. **Correctness** - Verify that the software platform and its modules perform their intended functions correctly and
+#. **Correctness** - Verify that the software platform and its modules implement their specified behavior and
    produce the expected results.
-#. **Completeness** - Ensure that all specified requirements have been implemented.
-#. **Reliability** - Confirm that the software operates reliably under specified conditions and can handle errors
-   properly.
-#. **Performance** - Assess the software's performance to ensure it meets the required performance criteria, such as
-   response time and throughput.
-#. **Maintainability** - Check that the software is maintainable, with clear documentation and code.
-#. **Compliance** - Ensure that the software complies with defined processes and guidelines of the project.
-#. **Traceability** - Verify that all requirements are traceable through the development process and that changes are
-   properly managed and documented according to the processes defined in this project.
 
-Verification scope and constraints
-----------------------------------
+#. **Completeness** - Verify that all applicable and valid requirements are implemented and appropriately verified.
 
-The software verification aspects described in this document focus on the verification of the software platform
-and modules developed within this project. The integration of the platform on a target device and the respective
-verification and validation should be considered by the distributor of the platform. On target integration tests that
-are running on a reference hardware in context of this project can be taken as a starting point.
+#. **Reliability** - Verify that the software operates reliably under the specified operating conditions and
+   handles identified error conditions appropriately.
 
-Risks and mitigation
---------------------
+#. **Performance** - Verify that applicable performance requirements, such as response time, resource consumption,
+   and throughput, are satisfied.
 
-Potential risks that derived from the verification activities and their respective mitigation measures are handled by
-the :doc:`project_management`.
+#. **Maintainability** - Support maintainability through appropriate software structure, verification evidence,
+   documentation, and automated quality checks.
 
-Schedules
----------
+#. **Compliance** - Verify compliance with the applicable project processes, development guidelines, and
+   verification requirements.
 
-The integration of software elements is driven by change requests and their respective
-:need:`doc_getstrt__change_process` model. The contribution of a feature itself implies that it gets fully
-verified.
+#. **Traceability** - Ensure traceability between requirements, design elements, implementation, verification
+   activities, and verification results, and ensure that changes are managed and documented according to the
+   project's defined processes.
+
+Verification Scope and Constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The verification activities defined in this document apply to the S-CORE software platform and the modules developed
+within the project.
+ 
+S-CORE performs verification at unit, component, feature, and platform-integration level as defined in this plan.
+Platform-integration testing performed by S-CORE uses the project's reference environment and reference hardware.
+ 
+Verification and validation of the S-CORE platform as integrated into a specific product or target system remains the
+responsibility of the downstream integrator or distributor. Verification evidence produced by S-CORE on the reference
+environment may be reused as supporting evidence, subject to an assessment of its applicability to the target system.
+ 
+The corresponding Assumptions of Use are defined in :need:`aou_req__platform__testing` and
+:need:`aou_req__platform__test_completion`.
+
+This is clearer than:
+
+Risks and Mitigation
+~~~~~~~~~~~~~~~~~~~~
+
+Risks identified through software integration and verification activities are managed according to
+:doc:`project_management`. This includes the identification, assessment, tracking, and mitigation of risks that could
+affect the completeness, validity, or effectiveness of verification activities and their evidence.
+
+Schedule and Integration Triggers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Software integration and verification are performed continuously as part of the project's change and contribution
+processes.
+
+Software changes are introduced through change requests and follow the applicable
+:need:`doc_getstrt__change_process`. A feature is considered ready for integration only when the verification
+activities applicable to that feature have been completed and the required verification evidence is available.
+
+Release-specific verification activities and verification reports are completed as part of the corresponding
+release process.
 
 Approach
-========
+--------
 
-General approach
-----------------
+General
+~~~~~~~
 
-The above defined objectives are supposed to be achieved by the following approaches.
+The verification objectives defined above are implemented using a Continuous Integration (CI) approach.
+ 
+Software integration and automated verification are performed continuously as part of the project's build and
+integration infrastructure. Software, build configuration, verification specifications, tests, infrastructure, and
+documentation are maintained as version-controlled artifacts.
+ 
+Where technically feasible, verification activities are automated and integrated into the CI pipelines. Manual
+verification is used where automation is not feasible or where the artifact under verification cannot reasonably be
+verified by an executable test.
+ 
+The following sections define the software integration and verification approach in more detail.
 
-The projects infrastructure is highly driven by a Continuous Integration (CI) methodology. Thus, not just the
-integration but also the verification approaches of the project are following that. Another aspect is the fact that
-software build and verification processes are fully automated. Software elements, infrastructure, tests, and
-documentation are defined as code. The following sections provide more details about the software integration as well
-as the software verification.
+This avoids "supposed to be achieved", which is too weak for a plan.
 
-Software integration
---------------------
+Software Integration
+~~~~~~~~~~~~~~~~~~~~
 
-The already mentioned approach of Continuous Integration means that software integration is performed with each fully
-automated software build at any time.
+Following the Continuous Integration approach, software elements are integrated through reproducible, automated builds
+and verification pipelines.
 
-The following types of integrations are applicable:
+The following types of changes are integrated:
 
-#. **New software elements** get integrated according to the :need:`doc__contr_guideline`
-#. **Fixes of defects** get integrated based on their prioritization described by the
+#. **New software elements** are integrated according to :need:`doc__contr_guideline`.
+
+#. **Defect fixes** are integrated according to the prioritization and resolution process defined in
    :doc:`problem_resolution`.
-#. **Changes** get integrated based on the :need:`wf__change_create_cr` and will follow
-   the :need:`doc__pull_request_guideline` as any other artifact.
 
-The test methods and techniques shall be selected based on the characteristics and specified behavior
-of the software element under test. This shall ensure proper testing from unit level to platform integration level.
-Specific recommendations for each test level are provided in the following sections of this verification plan.
+#. **Changes to existing software elements** follow :need:`wf__change_create_cr` and the contribution and review
+   process defined in :need:`doc__pull_request_guideline`.
 
-The following examples serve as illustration and inspiration for test selection:
-Resource Usage Evaluation is selected when requirements address resource management or when data
-corruption may occur. Interface Testing is applied when requirements target external API behavior.
-Boundary Value Analysis is used for buffers where overflow is deemed possible or when requirements specify
-input ranges and boundaries covering incorrect input values. This list is not complete, and additional tests
-may be selected based on the specific requirements of each software element.
+Verification methods and test derivation techniques shall be selected according to the characteristics, requirements,
+architecture, and identified risks of the software element under verification. The selected methods shall provide
+adequate verification from unit level through platform-integration level.
 
-Levels of integration and verification
---------------------------------------
+For example:
 
-There are the following different levels of integration and verification defined:
+* Resource Usage Evaluation may be selected when requirements constrain resource consumption or when exhaustion of
+  resources could affect required behavior.
+* Interface Testing is appropriate for verifying externally visible API behavior and interactions between software
+  elements.
+* Boundary Value Analysis is appropriate where requirements define input ranges, limits, buffer sizes, or other
+  boundary conditions.
 
-1. **Software unit verification** (incl. detailed design) and component verification to verify the integration of
-   units to a component and also the integration of smaller component(s) to a complex component based on
+These examples are not exhaustive. Additional verification methods shall be selected where required by the
+characteristics, requirements, architecture, or risk classification of the software element.
 
-   #. detailed design and
-   #. component architecture and
-   #. component requirements
+Levels of Integration and Verification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-2. **Software integration verification** on feature level to verify the integration of components to a feature based on
+S-CORE defines three verification levels:
 
-   #. feature architecture and
-   #. feature requirements
+#. **Software unit and component verification**
 
-3. **Software platform verification** as Platform Integration Testing of the integrated software element (on reference hardware) based on
+   Verifies individual software units, their detailed design, and the integration of units into components or
+   higher-level components.
 
-   #. Stakeholder requirements
+   Verification is based on:
 
+   * detailed design,
+   * component architecture, and
+   * component requirements.
 
-  **Note:** These three levels translate to the levels of ISO 26262 part 6 clauses 9 to 11, where compliant testing with full coverage is tailored out for the embedded software.
-  The specific tailoring is described in the :need:`doc__score_platform_safety_plan`.
-  The full Platform Integration Testing will be executed by the integrator. S-CORE project only executes tests on reference hardware.
-  These tests serve as an optional base for the integrator and will also be part of the
-  :need:`wp__verification_platform_ver_report`, but more on an informative character. The full scope
-  of clause 11 is tailored out accordingly for S-CORE (see: :need:`gd_guidl__verification_req_tailored`).
-  Practically, this means S-CORE will implement Platform Integration Tests for stakeholder requirements for demonstration,
-  but these are not intended to completely covering all stakeholder requirements.
+#. **Software feature integration verification**
+
+   Verifies the integration of components into a feature.
+
+   Verification is based on:
+
+   * feature architecture, and
+   * feature requirements.
+
+#. **Software platform integration verification**
+
+   Verifies the integration of software elements into the S-CORE software platform on the defined reference
+   environment and, where applicable, reference hardware.
+
+   Verification is based primarily on:
+
+   * stakeholder requirements, and
+   * applicable platform integration requirements.
+
+  .. note::
+
+   These verification levels correspond conceptually to the software verification and integration activities addressed
+   by ISO 26262-6, Clauses 9 to 11. Their application within S-CORE is subject to the tailoring defined in
+   :need:`doc__score_platform_safety_plan`.
+
+   S-CORE does not claim to provide complete target-system integration verification. Complete integration and
+   verification of S-CORE within a specific target system is the responsibility of the downstream integrator.
+
+   S-CORE performs platform-integration tests on its reference environment and reference hardware. The resulting
+   verification evidence is documented in :need:`wp__verification_platform_ver_report` and may serve as supporting
+   evidence for downstream integration.
+
+   Consequently, platform-integration tests maintained by S-CORE are not intended to provide complete verification
+   coverage of all stakeholder requirements for every possible target integration.
+
+   The applicable tailoring is defined in :need:`gd_guidl__verification_req_tailored`.
 
 Consistent Set of Verifications
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The S-CORE project selected a multi-repository approach but still decided to provide a "consistent stack"
-to its users (see :need:`dec_rec__strat__consistent_stack_vs_reference`). Consequently there is the need
-to collect a consistent verification evidence for this "Stack", which is the S-CORE SW platform.
+S-CORE follows a multi-repository development model while delivering a consistent software platform stack to its users
+(see :need:`dec_rec__strat__consistent_stack_vs_reference`). Verification evidence for a platform release therefore
+needs to represent a consistent out of software module versions and their dependencies.
 
-- S-CORE SEooCs/dependable elements developed in the module repositories can deliver their
-  feature(s) independently, based on verification evidence collected in one repository and documented
-  in one module verification report (see also :need:`dec_rec__platform__feature_delivery`).
-  So this should be consistent and does not need special consideration in this chapter.
-- S-CORE SW platform needs to collect verification evidence from all the modules it integrates and releases.
-  This is done in S-CORE within a dedicated repository, which is the "reference_integration".
-  Also the reference_integration demonstrates what is required to be done by the user of the S-CORE platform
-  (in the AoU :need:`aou_req__platform__testing`) for safety qualification. S-CORE shows this for one combination of S-CORE SW Platform Modules/OS/Hypervisor/HW.
-  Important: For every S-CORE module only one version is used in the reference_integration,
-  meaning that all users of the S-CORE module need to depend on this one version. This "aligned" dependency
-  may be different from the one used in the module repositories, raising the need to re-perform verifications
-  which are affected by these dependencies.
+Individual S-CORE modules, including SEooCs and othher dependable software elements, may develop and release features
+independently. Their verification evidence is produced within the corresponding module repository and documented in
+the module verification report. See also :need:`dec_rec__platform__feature_delivery`.
 
-Thus a **consistent set of verifications** for S-CORE SW platform is:
+For an S-CORE software platform release, verification evidence from the integrated modules must additionally be
+considered in the context of the versions that form the released platform configuration.
 
-- platform integration test (only possible with modules integrated to a platform)
-- feature integration test (should be tested with one set of modules versions)
-- component integration test (components may depend on components of another module)
-- structural coverage (may be affected, as also component tests are used for coverage calculation)
-- unit test (results should not be affected due to mocking, but needed for structural coverage completeness)
-- static code analysis (some checks depend also on the dependencies)
-- documentation build (as the produced documentation, including e.g. inspections, should match the used module version)
+The ``reference_integration`` repository provides the integration context for this purpose. It demonstrates the
+integration and verification activities expected for one defined combination offer
 
-How this **consistent set of verifications** is produced (e.g. by re-creating all the verification in the reference_integration
-or by collecting verification done in more than one repository) is not prescribed by this document.
-The best method should be agreed in S-CORE in a decision record, e.g. :need:`dec_rec__int__scope_reference_integration`
+* S-CORE software platform modules,
+* operating system,
+* hypervisors where applicable, and
+* reference hardware.
+
+It also provides reference evidence for activities required from downstream users according to
+:need:`aou_req__platform__testing`.
+
+A **consistent set of verification evidence** for an S-CORE software platform release includes, as applicable:
+
+* platform-integration test results,
+* feature-integration test results,
+* component-integration test results,
+* structural coverage results,
+* unit-test results required to establish complete structural coverage,
+* static-code-analysis results, and
+* the documentation build and associated inspection evidence.
+
+The mechanism used to establish this consistent evidence set is intentionally not prescribed by this verification
+plan. Evidence may, for example, be reproduced within ``reference_integration`` or collected from module repositories,
+provided that its validity for the released configuration is demonstrated.
+
+The selected approach shall be documented by an S-CORE decision record, for example
+:need:`dec_rec__int__scope_reference_integration`.
 
 .. _verification-methods:
 
 Verification Methods
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
-A verification is based on different methods. The derivation of test cases can also be based on certain methods. An
-overview of the different methods that are applicable in the project are given in this section. Usually the defined
-methods are not applied on each verification level. Due to that the following tables contain a column that defines the
-applicable level. Another column defines if a respective method is supposed to be applied if the linked references are
-QM or ASIL B relevant.
+Software verification uses a combination of verification methods and test derivation techniques. The appropriate
+methods depend on the verification level, the characteristics of the software element, its requirements, and its
+safety classification.
 
-Automated test cases should contain further information about which methods have been applied. The corresponding
-guidance is given here: :need:`gd_guidl__verification_guide`. The identifier of the respective
-method is to be used as meta data (*TestType* and *DerivationTechnique*). The tool-supported metadata values and
-requirement links are defined below. The method tables in this section also include verification activities which
-are not supported as test metadata values.
+Not every verification method is applicable at every verification level. The tables below therefore specify:
+
+* the verification levels for which each method is applicable, and
+* its applicability to QM and ASIL B software.
+
+Automated test specifications shall identify the applicable verification methods and derivation techniques according
+to :need:`gd_guidl__verification_guide`.
+
+Where supported by the test infrastructure, the method identifiers defined below shall be recorded using the
+``TestType`` and ``DerivationTechnique`` metadata fields. The method tables additionally contain verification activities
+that are not represented by test metadata.
 
 .. list-table:: Tool-supported test metadata
    :header-rows: 1
@@ -397,7 +470,7 @@ The following test derivation methods are optional, but may become required at h
      indicated by ``explorative-testing`` as derivation technique.
 
 Quality criteria
-----------------
+~~~~~~~~~~~~~~~~
 
 The quality criteria of the software verification activities are defined at the following table. The defined goals are
 to be reached with every contribution.
@@ -580,7 +653,7 @@ A rationale for the deviation needs to be provided for an official release.
 
 
 Test development
-----------------
+~~~~~~~~~~~~~~~~
 
 The verification steps as well as the development of test cases is done along with the implementation
 of code. A full automation of tests should be achieved and the derived test cases should contain meta
@@ -597,7 +670,7 @@ cases is followed. Any pre-existing test case (e.g. from OSS components) is revi
 to follow the :need:`gd_guidl__verification_specification` and :need:`gd_req__verification_link_tests`.
 
 Test execution and result analysis
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The execution of the tests is based on a full automation defined by build pipelines. The analysis of
 the test results needs to be performed by the :need:`rl__contributor`.
@@ -632,7 +705,7 @@ The results of the manual testing should be reconfirmed during subsequent verifi
 to ensure their continued validity especially for major release versions and to avoid regression issues.
 
 Verification of non-functional requirements
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Similar to the rare case of manual test execution also some requirements may not be verifiable by test but by other manual verification methods, e.g. checklist based analysis.
 
@@ -654,7 +727,7 @@ The results of the non-functional verification activities should be reconfirmed 
 to ensure their continued validity especially for major release versions and to avoid regression issues.
 
 Test selection and regression testing
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All existing automated test cases should be executed within continuous integration pipelines to verify initially developed
 components or software changes. A specific selection of sub sets is not planned. The fact that all existing and
@@ -667,7 +740,7 @@ Remark: When the release baseline of a feature is intended to be used as a basis
 the pre-check of manual verification activities ease the later platform integration and verification process.
 
 Work products and traceability
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The traceability between verification relevant work products is one of the defined objectives.
 An overall overview of the different work products and their relationship is given in project
@@ -679,10 +752,10 @@ The link between a test specification and the respective requirement or design s
 identifier of the reference annotated to the verification specification.
 
 Environments and resources
-==========================
+--------------------------
 
 Roles
------
+~~~~~
 
 In general, the different roles of this project are defined within the Process documentation:
 :need:`rl__project_lead`. The following roles are crucial to comply with the aspects defined in this
@@ -724,7 +797,7 @@ others see the contribution and have the possibility to perform additional revie
 the :need:`rl__committer` and :need:`rl__testing_community`.
 
 Tools
------
+~~~~~
 
 The list of the tools mentioned here does not reflect the full list of tools that are used for the whole project. Only
 tools that have an important impact on the test execution and reporting are given here. A full list of tools (and their
@@ -767,7 +840,7 @@ built-in test framework is used to test respective software components.
 
 
 Verification setups and variants
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Different test frameworks are used to verify software components and their integration into the platform (see Tools
 section above). Driven by that the following test setups can be derived:
@@ -780,7 +853,7 @@ All defined setups are used to run automated tests within continuous integration
 
 
 Test execution environment and reference hardware
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The platform is consisting solely on features that are considered as "middleware" as the layer
 above the hardware abstraction layer. The platform itself does not require to be running on
