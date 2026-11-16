@@ -12,323 +12,710 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Platform Safety Plan
-   :id: doc__score_platform_safety_plan
+.. document:: Platform Safety Management Plan
+   :id: doc__platform_safety_management_plan
    :status: draft
-   :version: 2
+   :version: 3
    :safety: ASIL_B
    :security: NO
    :realizes: wp__platform_safety_plan[version==1], wp__safety_tailoring[version==1]
    :tags: platform_management
 
 
-.. _score_platform_safety_plan:
+.. _platform_safety_management_plan:
 
-Safety management / Platform Safety Plan
-----------------------------------------
+PF Safety Management Plan
+=========================
 
 Purpose
-+++++++
+-------
 
-The main purpose of the safety plan is to:
+The purpose of the Safety Management Plan is to define the functional safety
+management framework for the S-CORE platform and to ensure that the applicable
+requirements of ISO 26262 are addressed according to the defined scope and
+tailoring.
 
-* adhere to ISO 26262 where applicable for the project according to the defined tailoring
+In particular, this plan defines:
 
-And:
+* the functional safety management roles, responsibilities, and authorities;
+* the functional safety lifecycle applicable to the S-CORE platform;
+* the required functional safety activities and work products;
+* the project-wide tailoring of functional safety activities and the
+  corresponding rationales;
+* the planning, coordination, monitoring, and reporting of functional safety
+  activities;
+* the management of deviations from the safety plan;
+* the preparation and maintenance of the safety case and its supporting
+  evidence; and
+* the activities required to assess functional safety process conformance,
+  including the functional safety audit.
 
-* to define and assign the roles and responsibilities regarding safety activities
-* to define the tailored safety activities, to provide the corresponding rationales for tailoring and to review the provided rationales
-* to plan the safety activities
-* to coordinate and track the progress of safety activities in accordance with the safety plan
-* to ensure a correct progression of the safety activities throughout the safety lifecycle
-* to plan to create a comprehensible safety case (collection of the safety related work products)
-* to judge whether the SW achieves functional safety process conformance (i.e. the functional safety audit)
 
 Objectives and Scope
-++++++++++++++++++++
+--------------------
 
 Functional Safety Management Goals
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Adherence to the ISO 26262 according to the defined tailoring
+The primary functional safety management objective is to establish and maintain
+conformance with the applicable requirements of ISO 26262 within the defined
+S-CORE scope and tailoring.
 
-in detail
+To achieve this objective, functional safety management shall:
 
-* to plan all functional safety related activities and work products
-* to monitor and facilitate all activities
-* to measure and report functional safety status based on well-defined metrics
+* plan the required functional safety activities and work products;
+* assign responsibilities for their execution, verification, and approval;
+* coordinate and monitor execution of the planned safety activities;
+* identify and manage deviations from the Safety Plan;
+* monitor completeness and maturity of the required safety work products;
+* measure functional safety status using defined criteria and metrics;
+* report functional safety status, risks, and unresolved issues; and
+* provide the evidence required to support the safety case and functional safety
+  audit.
 
 Functional Safety Management Scope
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There is no deviation from the scope presented in the `S-CORE project page <https://eclipse-score.github.io/>`_ .
-The platform and its components are developed, and integrated for an assumed technical system as Safety Element out of Context (SEooC).
-The development of the platform and its components follows the defined processes.
-Responsibilities for development, implementation, integration and verification are also defined in the processes.
+The functional safety management scope is aligned with the overall S-CORE
+project scope.
 
-Regarding the platform specifics:
+The S-CORE platform and its components are developed and integrated for an
+assumed technical system. For functional safety purposes, the platform is
+developed as a Safety Element out of Context (SEooC).
 
-* the highest ASIL in the project is ASIL B
-* all safety activities from a procedural point of view are developed according to ASIL B
-* all safety related SW in the project is developed according to ISO 26262 ASIL B
+Platform development follows the processes defined by S-CORE. Responsibilities
+for management, requirements engineering, architecture, implementation,
+integration, verification, and functional safety activities are assigned
+through the applicable processes and role definitions.
 
-The SW platform functionality consists of features, which are based on a set of requirements and are developed in parallel.
-These features are developed into SW components contained in "modules", which are another set of SEooCs (initiated by a change request).
-A template exists to guide this: :need:`gd_temp__module_safety_plan`.
+The following project-wide assumptions apply:
+
+* the highest targeted Automotive Safety Integrity Level is ASIL B;
+* safety-related development activities are performed according to the
+  applicable and tailored ISO 26262 requirements for ASIL B; and
+* safety-related software intended to support ASIL B applications is developed
+  according to the applicable S-CORE safety processes.
+
+The software platform consists of Features that are defined by requirements and
+may be developed in parallel. Features are implemented by software components
+organized into Modules.
+
+For safety-related Module development, Module-specific safety activities,
+assumptions, work products, and tailoring shall be defined in the applicable
+Module Safety Plan.
+
+The template :need:`gd_temp__module_safety_plan` shall be used for this purpose.
 
 Tailoring
-^^^^^^^^^
-Tailoring of safety activities:
+~~~~~~~~~
 
-* The tailoring is divided into project wide and module specific rules.
-* Project wide tailoring is documented in this document - this is based on development of a platform SEooC.
-* Module SEooC specific tailoring is documented in the module development Safety Plans - this may be based on SEooC specifics or because component qualification according to ISO 26262 part 8 clause 12 (or ISO PAS 8926) is selected.
-* In case of a change request on an existing feature (i.e. a change request), the subsequent safety planning will be done based on an impact analysis.
+ISO 26262 activities and work products are tailored according to the S-CORE
+development scope and the assumptions associated with development of the
+platform as a software SEooC.
 
-The following  ISO 26262 defined safety work products are not relevant for the S-CORE SW platform development:
+Tailoring is defined at two levels:
 
-* Because these are in responsibility of the system integrator: :need:`std_wp__iso26262__management_751`,
-  :need:`std_wp__iso26262__system_652`, :need:`std_wp__iso26262__system_653`, :need:`std_wp__iso26262__system_654`,
-  :need:`std_wp__iso26262__system_655`, :need:`std_wp__iso26262__system_656`, :need:`std_wp__iso26262__system_657`,
-  :need:`std_wp__iso26262__system_751`, :need:`std_wp__iso26262__system_752`, :need:`std_wp__iso26262__system_851`,
-  :need:`std_wp__iso26262__system_852`
+* **Project-wide tailoring** applies to the S-CORE platform and is defined in
+  this Safety Management Plan.
+* **Module-specific tailoring** applies to an individual Module and shall be
+  documented and justified in the corresponding Module Safety Plan.
 
-  Note that stakeholder requirements (:need:`std_wp__iso26262__system_651`) are in scope of the project,
-  to be able to address System and HW related failures which are typically mitigated by SW (e.g. end-to-end protection for ECU external communication).
-  However, these are considered "Assumed Technical Safety Requirements" of the SW platform SEooC and do not require testing by the SEooC supplier.
-  Thus, system-level testing is out of scope. S-CORE will implement Platform Integration Tests of stakeholder requirements for demonstration purposes,
-  but these are not intended to provide complete coverage of the stakeholder requirements.
-  There will be SW integration tests of feature requirements as specified in ISO 26262 part 6-10.
-  These tests may be reused by users on their HW platform to address Technical Safety Requirements for the SW platform.
-  Whether these are sufficient to cover the TSRs must be analyzed and decided by the user.
+Module-specific tailoring may result from characteristics of the Module, its
+safety classification, applicable SEooC assumptions, or the selected
+qualification approach, including qualification according to ISO 26262 Part 8,
+Clause 12, where applicable.
 
-  Therefore and as S-CORE only delivers source code, :need:`std_wp__iso26262__software_1052` is tailored out.
+For changes to existing safety-related Features or Modules, an impact analysis
+shall determine which existing safety activities and work products are affected
+and which activities need to be created, updated, or repeated.
 
-* Also tailored out is the SW testing on the target, as the S-CORE project can only test on reference HW
-  (part of SW integration testing). So these are not relevant: :need:`std_wp__iso26262__software_1151`, :need:`std_wp__iso26262__software_1152`
+The following ISO 26262 work products and activities are tailored out at
+platform level. The rationale for each tailoring decision is documented below.
 
-* Because there is no calibration used for the S-CORE SW platform components, only configuration: :need:`std_wp__iso26262__software_app_c_52`,
-  :need:`std_wp__iso26262__software_app_c_54`, :need:`std_wp__iso26262__software_app_c_57`
 
-* Because distributed development is not how the project is organized. All contributors are seen as part of the project team.
-  When used, OSS components are qualified and external SEooCs are integrated in the project scope: :need:`std_wp__iso26262__support_551`,
-  :need:`std_wp__iso26262__support_552`, :need:`std_wp__iso26262__support_553`, :need:`std_wp__iso26262__support_554`, :need:`std_wp__iso26262__support_555`, :need:`std_req__iso26262__management_64610`
+System-Level Development
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Because in the S-CORE SW platform HW elements are out of scope: :need:`std_wp__iso26262__support_1351`, :need:`std_wp__iso26262__support_1352`, :need:`std_wp__iso26262__support_1353`, :need:`std_req__iso26262__management_6454`
+System-level development is outside the S-CORE platform development scope and
+remains the responsibility of the system integrator.
 
-* Because in the S-CORE SW platform a proven in use argument will not be applied: :need:`std_wp__iso26262__support_1451`, :need:`std_wp__iso26262__support_1452`, :need:`std_req__iso26262__management_6453`
+Therefore, the following system-level work products are not created by S-CORE:
 
-* Because in the S-CORE SW platform interfacing of out of scope of ISO 26262 applications is not planned: :need:`std_wp__iso26262__support_1551`
+* :need:`std_wp__iso26262__management_751`,
+  :need:`std_wp__iso26262__system_652`,
+  :need:`std_wp__iso26262__system_653`,
+  :need:`std_wp__iso26262__system_654`,
+  :need:`std_wp__iso26262__system_655`,
+  :need:`std_wp__iso26262__system_656`,
+  :need:`std_wp__iso26262__system_657`,
+  :need:`std_wp__iso26262__system_751`,
+  :need:`std_wp__iso26262__system_752`,
+  :need:`std_wp__iso26262__system_851`, and
+  :need:`std_wp__iso26262__system_852`.
 
-* Because in the S-CORE SW platform integration of safety-related systems not developed according to ISO 26262 is not planned: :need:`std_wp__iso26262__support_1651`
+Stakeholder requirements (:need:`std_wp__iso26262__system_651`) remain within
+the S-CORE scope where they are required to define assumptions, constraints, and
+expected behavior of the software platform.
 
-* Because in the S-CORE SW platform no ASIL decomposition is planned: :need:`std_wp__iso26262__analysis_551`, :need:`std_wp__iso26262__analysis_552`.
-  According to that also :need:`std_req__iso26262__analysis_641`, :need:`std_req__iso26262__analysis_642`, :need:`std_req__iso26262__analysis_643`, :need:`std_req__iso26262__analysis_644` are tailored out for safety analyses.
+System- and hardware-related requirements that must be assumed by the software
+SEooC are treated as assumed requirements or constraints of the platform and
+are provided to platform integrators as applicable.
 
-* Because HSI is coming from HW (and systems) engineering which are not part of S-CORE
-  and the standard only asks for refinement during SW development. As the input is missing, there is nothing to refine.
-  Expectations towards the HW/Environment are covered by AoUs. Additionally S-CORE only provides reference HW integration,
-  so every user of the platform would have to redo the effort anyway: :need:`std_wp__iso26262__software_652`
+System-level verification remains the responsibility of the system integrator
+and is therefore outside the S-CORE verification scope.
 
-* Because the SW platform is not an safety item but an element: :need:`std_wp__iso26262__management_651`, hence impact analysis of the item level is tailored out
+S-CORE may provide Platform Integration Tests for selected stakeholder
+requirements for demonstration and integration-support purposes. These tests do
+not constitute complete system-level verification.
 
-But also some activities based on requirements defining what has to be done to create a workproduct which is in scope of the S-CORE platform are tailored:
+Software integration testing of applicable Feature requirements is performed
+according to the S-CORE software verification process and the applicable
+requirements of ISO 26262 Part 6.
 
-* Because those are not relevant for ASIL_B: :need:`std_req__iso26262__system_6423`,
-  :need:`std_req__iso26262__system_6424`, :need:`std_req__iso26262__system_6425`, :need:`std_req__iso26262__support_12423`
+The resulting verification evidence may be reused by an integrator as supporting
+evidence. The integrator remains responsible for determining whether this
+evidence is sufficient for verification of the Technical Safety Requirements in
+the target system.
 
-* Because S-CORE is not planning to do a safety assessment: :need:`std_req__iso26262__management_64121`, :need:`std_req__iso26262__management_64122`, :need:`std_req__iso26262__management_64123`,
-  :need:`std_req__iso26262__management_64124`, :need:`std_req__iso26262__management_64125`, :need:`std_req__iso26262__management_64126`, :need:`std_req__iso26262__management_64127`, :need:`std_req__iso26262__management_64128`,
-  :need:`std_req__iso26262__management_64129`, :need:`std_req__iso26262__management_641210`, :need:`std_req__iso26262__management_641211`, :need:`std_req__iso26262__management_641212`, :need:`std_req__iso26262__management_641213`
+As S-CORE provides the software platform as source code and does not perform
+integration into the final target system,
+:need:`std_wp__iso26262__software_1052` is tailored out.
 
-* Because S-CORE only performs verification reviews (called formal document review) and no confirmation reviews: :need:`std_req__iso26262__management_64101`,
-  :need:`std_req__iso26262__management_64102`, :need:`std_req__iso26262__management_64103`, :need:`std_req__iso26262__management_64104`, :need:`std_req__iso26262__management_64105`
+Target Hardware Verification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Approach
-++++++++
+S-CORE performs integration and verification on defined reference hardware.
+Verification on the final target hardware is outside the S-CORE development
+scope and remains the responsibility of the platform integrator.
 
-Safety Culture
-^^^^^^^^^^^^^^
+Therefore, the following work products are tailored out at platform level:
 
-The safety of the project S-CORE is inherent. It relies on the personal dedication and integrity of every person who is involved in the project.
-The safety thinking in the project allows a questioning attitude and fosters the taking of responsibility.
-Every participation, e.g. with the raise up of an improvement or by asking questions in the discussion section of GitHub is welcomed.
-The processes, guidelines and templates define the organizational framework.
-Adherence is verified by automated checks and manual inspections.
-All the aspects of ISO 26262 are directly implemented in the development process to ensure a proper communication and high understanding of functional safety.
-With continuous improvements, an integral aspect in all processes, we want to achieve excellence.
+* :need:`std_wp__iso26262__software_1151`
+* :need:`std_wp__iso26262__software_1152`
 
-Cybersecurity Interface
+
+Calibration
+^^^^^^^^^^^
+
+S-CORE platform components do not use calibration data within the defined
+development scope. Configuration mechanisms are used instead.
+
+Consequently, the following calibration-related work products are not
+applicable:
+
+* :need:`std_wp__iso26262__software_app_c_52`
+* :need:`std_wp__iso26262__software_app_c_54`
+* :need:`std_wp__iso26262__software_app_c_57`
+
+
+Distributed Development
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Cybersecurity is a critical aspect of the overall safety culture and is recognized as an essential element in the development and operation of the S-CORE platform.
-While functional safety and cybersecurity have distinct objectives, their interaction is managed through coordinated processes and shared responsibilities.
+S-CORE development is organized as a common open-source project. Contributions
+are integrated through the S-CORE development, review, and approval processes.
 
-The project acknowledges the need to address cybersecurity risks that may impact safety. To this end, the following measures are implemented:
+External open-source components and externally developed SEooCs are handled
+through the applicable qualification or integration processes rather than
+through the distributed development model.
 
-* Regular collaboration between the safety and cybersecurity teams to identify and assess potential cyber threats that could affect safety functions.
-* Integration of cybersecurity considerations into safety analyses, including risk assessments, to ensure that cyber risks are systematically evaluated.
-* Alignment of safety and cybersecurity requirements in the development lifecycle, with traceability between stakeholder safety requirements and relevant cybersecurity controls.
-* Participation in cross-functional reviews and audits to ensure that both safety and cybersecurity requirements are met and that any conflicts are resolved.
-* Continuous monitoring of emerging cybersecurity threats and updating the security plan accordingly; update the safety plan only if safety-related impacts are identified.
+Therefore, the following distributed-development-related work products and
+requirements are tailored out:
 
-The project is committed to further strengthening the interface between safety and cybersecurity, and will regularly review and update its processes to reflect best practices and regulatory requirements.
-This approach ensures that cybersecurity is not treated in isolation, but as an integral part of the platform's safety culture and management system.
-The security management aspects are defined in the :doc:`security_management`.
+* :need:`std_wp__iso26262__support_551`
+* :need:`std_wp__iso26262__support_552`
+* :need:`std_wp__iso26262__support_553`
+* :need:`std_wp__iso26262__support_554`
+* :need:`std_wp__iso26262__support_555`
+* :need:`std_req__iso26262__management_64610`
 
-Functional Safety Management Organization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hardware Elements
+^^^^^^^^^^^^^^^^^
 
-It is the project strategy to qualify the platform or components of the platform to the appropriate international standards and directives.
-Therefore the project approach to facilitate a common culture regarding safety and security is part of our documentation.
-The project will be under the Eclipse Foundation and so the `Eclipse Foundation Project Handbook: <https://www.eclipse.org/projects/handbook/>`_ applies.
+Development and qualification of hardware elements are outside the S-CORE
+platform development scope.
 
-*Eclipse Roles*
+Therefore, the following work products and requirements are tailored out:
 
-* `Contributors <https://www.eclipse.org/projects/handbook/#contributing-contributors>`_ can be everyone and we will not discourage the open source community from this. As the contributor cannot merge code (or any other work product) into the project's codebase, the safety development competence of the contributor is irrelevant.
-* `Committers <https://www.eclipse.org/projects/handbook/#contributing-committers>`_ play the main development role in the project, as only these are allowed to merge, so they are the ultimate responsible for the project's repository content.
-* The Eclipse `Project Lead(s) <https://www.eclipse.org/projects/handbook/#roles-pl>`_ has the ISO 26262 project manager role.
+* :need:`std_wp__iso26262__support_1351`
+* :need:`std_wp__iso26262__support_1352`
+* :need:`std_wp__iso26262__support_1353`
+* :need:`std_req__iso26262__management_6454`
 
-*Project Roles*
 
-Roles are defined in every process and in a generic roles section. All those are matched to Eclipse roles.
-Project role assignment is documented in dedicated documents.
+Proven in Use
+^^^^^^^^^^^^^
 
-*Critical dependencies*
+A proven-in-use argument is not used as a qualification approach for the S-CORE
+platform.
 
-The project has not implemented a quality management system yet.
-But it aims to be conform to ASPICE, as defined in the management system.
-Continuous improvement is part to all processes. Improvements are handled in the scope of Quality Management.
+Therefore, the following work products and requirements are tailored out:
 
-*Risk*
+* :need:`std_wp__iso26262__support_1451`
+* :need:`std_wp__iso26262__support_1452`
+* :need:`std_req__iso26262__management_6453`
 
-Organization and management system has not a mature level yet.
 
-*Skills*
+Interfaces with Applications Outside the Scope of ISO 26262
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The main safety related project roles are the project manager, the safety manager and the safety engineer, these also have to have the (Eclipse) committer role.
-As defined in `Committer Training <https://www.eclipse.org/projects/training/>`_ the committers are elected in a meritocratic manner, meaning those have to show their skills and understanding of the project processes in several previous pull requests.
+Interfacing safety-related functionality with applications outside the scope of
+ISO 26262 is not part of the defined S-CORE safety lifecycle.
 
-For the :need:`rl__project_lead`, the :need:`rl__safety_manager` and the :need:`rl__safety_engineer` the required skills and experience are described
-in these project role definitions. They are also elected in a meritocratic way and this election is documented including the evidences checked to prove the experience.
+Therefore, :need:`std_wp__iso26262__support_1551` is tailored out.
 
-Committers in the S-CORE project can work on the development of safety related or non-safety related SW modules.
-If they work on safety related modules they have to prove (additionally to their committer election, which already shows they are skilled developers):
 
-* two years practice of safety related SW development (or management) relevant for the section content (includes trainings in safety standards like ISO 26262)
-* training on the S-CORE processes
+Integration of Safety-Related Systems Developed Outside ISO 26262
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To ensure this, the platform and module repositories folders (and files) are protected by "CODEOWNER" sections.
-These "CODEOWNERS" need to approve any pull request modifying a file in their area before it is merged.
+Integration of safety-related systems that have not been developed according to
+ISO 26262 is not part of the defined S-CORE platform development scope.
 
-The successful checking of CODEOWNERS experience is ensured by the safety manager and documented in the role assignment document.
-One important aspect to this is, that we ensure the identity of the committer by applying the GitHub digital signature mechanism.
+Therefore, :need:`std_wp__iso26262__support_1651` is tailored out.
 
-Functional Safety Resources
+ASIL Decomposition
+^^^^^^^^^^^^^^^^^^
+
+ASIL decomposition is not applied within the S-CORE platform development scope.
+
+Therefore, the following work products are tailored out:
+
+* :need:`std_wp__iso26262__analysis_551`
+* :need:`std_wp__iso26262__analysis_552`
+
+Consequently, the following associated safety-analysis requirements are also
+tailored out:
+
+* :need:`std_req__iso26262__analysis_641`
+* :need:`std_req__iso26262__analysis_642`
+* :need:`std_req__iso26262__analysis_643`
+* :need:`std_req__iso26262__analysis_644`
+
+
+Hardware-Software Interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A dedicated safety manager is elected for all the S-CORE SEooCs development - see :need:`doc__platform_safety_manager`.
+The Hardware-Software Interface (HSI) is defined by the system and hardware
+integration context, which is outside the S-CORE development scope.
 
-The safety manager, supported by the project manager (:need:`rl__project_lead`) or the assigned Feature team leads, will ensure that
-safety activities are actively planned, developed, analyzed, verified and tested and managed throughout the life cycle of the project.
-As all the implementation of safety functions takes place within module development, there is a responsible safety manager documented in the module's safety plan.
+S-CORE defines assumptions and constraints on the hardware and execution
+environment through the applicable Assumptions of Use (AoUs). Integration on
+reference hardware is provided for development and verification purposes but
+does not replace the platform integrator's HSI definition and verification for
+the target environment.
 
-Resources and milestones are planned in Github Issues for all activities.
-There are issue templates for sagas (covering one feature development) and for epics (covering one development work product each).
-Resource and milestone planning is done as defined in the :doc:`project_management`
+Therefore, :need:`std_wp__iso26262__software_652` is tailored out at platform
+level.
 
-*Tools*
 
-The whole development and thus all work products are located in Github. The development is automated as much as possible and follows the defined processes.
-Github issues are used as planning tool.
-The issue types and issue types workflows are described in the platform management plan.
-For safety relevant issues types a "safety" label is used.
+Item-Level Impact Analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Functional Safety Management Communication
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The S-CORE software platform is developed as an element rather than as an
+ISO 26262 item. Item-level definition and management therefore remain outside
+the S-CORE project scope.
 
-To exchange general information and to clarify general topics the following communication channels are used:
+Consequently, :need:`std_wp__iso26262__management_651` and the corresponding
+item-level impact analysis are tailored out.
 
-* Regular (online) meetings, at least every month.
-* E-Mails
-* Messenger Services e.g., Slack, Microsoft Teams, Github Notifications
-* Ad hoc safety related meetings are set up for clarification topics.
 
-*Reporting*
+ASIL-Specific Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The safety management status is reported in the Project Lead Circle Meeting which is defined in :need:`doc__project_mgt_plan`.
-The status report is based on safety plans work product lists (see below) and verification reports on platform and module level:
+Requirements that are not applicable to the targeted ASIL B development scope
+are tailored out:
+
+* :need:`std_req__iso26262__system_6423`
+* :need:`std_req__iso26262__system_6424`
+* :need:`std_req__iso26262__system_6425`
+* :need:`std_req__iso26262__support_12423`
+
+Functional Safety Assessment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A Functional Safety Assessment is not performed by the S-CORE project.
+
+Therefore, the corresponding requirements are tailored out:
+
+* :need:`std_req__iso26262__management_64121`
+* :need:`std_req__iso26262__management_64122`
+* :need:`std_req__iso26262__management_64123`
+* :need:`std_req__iso26262__management_64124`
+* :need:`std_req__iso26262__management_64125`
+* :need:`std_req__iso26262__management_64126`
+* :need:`std_req__iso26262__management_64127`
+* :need:`std_req__iso26262__management_64128`
+* :need:`std_req__iso26262__management_64129`
+* :need:`std_req__iso26262__management_641210`
+* :need:`std_req__iso26262__management_641211`
+* :need:`std_req__iso26262__management_641212`
+* :need:`std_req__iso26262__management_641213`
+
+
+Confirmation Reviews
+^^^^^^^^^^^^^^^^^^^^
+
+S-CORE performs verification reviews of applicable work products through the
+defined Formal Document Review process.
+
+Confirmation reviews are not performed as a separate assurance activity within
+the S-CORE scope.
+
+Therefore, the following requirements are tailored out:
+
+* :need:`std_req__iso26262__management_64101`
+* :need:`std_req__iso26262__management_64102`
+* :need:`std_req__iso26262__management_64103`
+* :need:`std_req__iso26262__management_64104`
+* :need:`std_req__iso26262__management_64105`
+
+
+Approach
+--------
+
+Safety Culture
+~~~~~~~~~~~~~~
+
+S-CORE promotes a functional safety culture in which contributors are encouraged
+to identify risks, question assumptions, report potential safety issues, and
+take responsibility for the quality and safety of their work.
+
+The project supports this culture through:
+
+* clearly defined roles and responsibilities;
+* documented processes, guidelines, and templates;
+* functional safety training appropriate to assigned responsibilities;
+* open technical discussion and review;
+* mechanisms for reporting safety concerns and process improvements;
+* independent review and verification where required;
+* automated process and work-product checks where appropriate; and
+* continuous improvement based on findings, experience, and feedback.
+
+Adherence to defined processes is supported through automated checks, repository
+controls, reviews, and manual inspections.
+
+Functional safety requirements are integrated into the development processes
+rather than treated as separate activities. This ensures that functional safety
+is considered throughout planning, requirements engineering, architecture,
+implementation, integration, verification, and release.
+
+
+Cybersecurity Interface
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Functional safety and cybersecurity have distinct objectives but may affect the
+same platform functions, assumptions, requirements, and architectural decisions.
+
+Safety and cybersecurity activities shall therefore be coordinated where
+cybersecurity threats or controls may affect functional safety.
+
+This includes, where applicable:
+
+* identifying cybersecurity threats with potential safety impact;
+* considering security-related assumptions and findings in safety analyses;
+* aligning interacting safety and cybersecurity requirements;
+* maintaining traceability between related safety and security concerns;
+* coordinating reviews of architectural decisions affecting both domains; and
+* communicating cybersecurity findings that may invalidate safety assumptions,
+  requirements, or analyses.
+
+The :need:`rl__safety_manager` and the responsible security management roles
+shall coordinate the treatment of identified cross-domain dependencies.
+
+Changes to the cybersecurity context that may affect functional safety shall
+trigger an evaluation of the affected safety assumptions, analyses, or work
+products.
+
+Cybersecurity management is defined in :doc:`security_management`.
+
+
+Functional Safety Management Organization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Functional safety management is integrated into the S-CORE project organization.
+
+The project organization provides the roles, responsibilities, decision
+mechanisms, and competence required to plan, execute, monitor, and assess
+functional safety activities.
+
+As an Eclipse Foundation project, S-CORE additionally operates within the
+governance framework defined by the `Eclipse Foundation Project Handbook
+<https://www.eclipse.org/projects/handbook/>`_.
+
+
+Eclipse Roles
+^^^^^^^^^^^^^
+
+The Eclipse contribution model distinguishes between Contributors, Committers,
+and Project Leads.
+
+* **Contributors** may propose changes to the project. Contributions affecting
+  safety-related work products are subject to the same review, verification, and
+  approval requirements as other safety-related changes. Contributors cannot
+  independently approve and merge their contributions.
+
+* **Committers** may approve and integrate changes according to their repository
+  permissions and the project's governance rules. Committers performing
+  safety-related activities shall satisfy the competence requirements defined
+  for their assigned responsibilities.
+
+* **Project Leads** provide project-level governance. The
+  :need:`rl__project_lead` additionally fulfills the project-management
+  responsibilities assigned by the S-CORE functional safety processes.
+
+
+Project Roles
+^^^^^^^^^^^^^
+
+Functional safety roles and their responsibilities are defined by the applicable
+S-CORE processes and generic project role definitions.
+
+Role assignments are documented through the applicable role-assignment
+mechanism.
+
+The main project roles for functional safety management are:
+
+* :need:`rl__project_lead`
+* :need:`rl__safety_manager`
+* :need:`rl__safety_engineer`
+
+Additional roles may have functional safety responsibilities as defined by the
+applicable processes.
+
+competence, experience, and knowledge for their assigned responsibilities.
+
+The required skills and experience for :need:`rl__project_lead`,
+:need:`rl__safety_manager`, and :need:`rl__safety_engineer` are defined in the
+corresponding role definitions.
+
+Committers working on safety-related Modules shall additionally demonstrate:
+
+* at least two years of experience in safety-related software development,
+  verification, or management relevant to their assigned responsibilities,
+  including appropriate knowledge of functional safety standards such as
+  ISO 26262; and
+* completion of the applicable S-CORE process training.
+
+Evidence of the required competence shall be recorded through the applicable
+role-assignment mechanism.
+
+Repository ``CODEOWNERS`` are used to enforce review by authorized and
+appropriately competent persons for defined safety-related areas.
+
+Assignment of safety-related CODEOWNERS shall be reviewed by the
+:need:`rl__safety_manager` and documented through the applicable role-assignment
+mechanism.
+
+Where approval authenticity is relevant, the configured GitHub identity and
+signature mechanisms are used to provide traceable evidence of the person
+performing the approval.
+
+
+Functional Safety Resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A :need:`rl__safety_manager` is assigned for platform-level functional safety
+management. The assignment is documented in
+:need:`doc__platform_safety_manager`.
+
+For safety-related Module development, the responsible safety management role
+shall be identified in the corresponding Module Safety Plan.
+
+The :need:`rl__safety_manager`, supported by the
+:need:`rl__project_lead`, Feature Team Leads, and assigned safety roles, ensures
+that required functional safety activities are planned, assigned, monitored,
+and completed throughout the applicable safety lifecycle.
+
+Required activities, resources, dependencies, and milestones shall be
+represented in the project planning infrastructure according to
+:doc:`project_management`.
+
+
+Tools
+^^^^^
+
+GitHub provides the primary infrastructure for planning, development, review,
+integration, and storage of project work products.
+
+The following mechanisms support functional safety management:
+
+* GitHub Issues for planning and tracking safety activities and findings;
+* GitHub Pull Requests for review and approval of changes;
+* repository rules and CODEOWNERS for enforcing required reviews;
+* CI workflows for automated verification; and
+* GitHub Projects, milestones, and issue relationships for planning and
+  monitoring safety-related work.
+
+Safety-related Issues shall use the applicable project classification, including
+the ``safety`` label where defined.
+
+The applicable Issue Types and workflows are defined in
+:doc:`project_management`.
+
+The :need:`rl__safety_manager` regularly reports functional safety status to the
+:term:`Project Lead Circle`.
+
+Reporting shall consider, as applicable:
+
+* completion status of planned safety activities;
+* maturity and completeness of safety work products;
+* verification status;
+* open safety anomalies and findings;
+* deviations from applicable Safety Plans;
+* safety-related risks and dependencies; and
+* readiness for upcoming safety-related milestones or releases.
+
+The status is derived from the applicable safety plans and verification
+evidence, including:
 
 * :need:`wp__platform_safety_plan`
 * :need:`wp__module_safety_plan`
 * :need:`wp__verification_platform_ver_report`
 * :need:`wp__verification_module_ver_report`
 
-*Escalation*
 
-* :need:`rl__safety_manager` to :need:`rl__project_lead` (in the Project Lead Circle)
+Escalation
+^^^^^^^^^^
 
-The Project Lead Circle is the ultimate decision instance within the S-CORE project.
-But as in every Eclipse project the rules and committee decisions of Eclipse have to be followed.
+Safety issues shall be resolved at the lowest organizational level capable of
+providing an appropriate resolution.
 
-Examples for valid escalation causes are:
+Where resolution cannot be achieved, the issue shall be escalated according to
+the following path:
 
-* Safety issues cannot be resolved on module level or with the available resources.
-* There are conflicting points-of-view between the module project manager (= Feature team lead) and any safety manager
-* Safety anomalies detected by the safety manager are not accepted by the module project manager
+.. code-block:: text
 
-Functional Safety Management Life Cycle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Module / Feature Team
+            |
+            v
+      Safety Manager
+            |
+            v
+       Project Lead
+            |
+            v
+   Project Lead Circle
+            |
+            v
+    Eclipse Foundation
+     (where applicable)
 
-The safety lifecycle of the S-CORE project is initiated at the project set-up and driven and maintained by the safety manager supported by the :need:`rl__process_community`.
-Note that the Eclipse Foundation also defines `project phases <https://www.eclipse.org/projects/handbook/#starting-project-phases>`_.
-Eclipse definition is more about the process maturity for the whole project, if we are in Mature Phase, we latest will have the project lifecycle as defined in our process description.
-Nevertheless, Safety Development and even Safety Case release is independent from Mature and Incubation Phase as the completeness and appropriateness of the platform process and artifacts
-is determined by Safety Audit and not be Eclipse project reviews.
-The S-CORE project implements a reduced ISO 26262 safety lifecycle, covering only those phases relevant to software SEooC development.
-All omitted phases (e.g., HARA, system/hardware development, calibration, proven-in-use) are justified and documented in the Tailoring section.
-All safety activities, planning, and evidence generation are tracked via the Platform Safety Plan, Module Safety Plans, and associated GitHub Issues.
-This approach ensures compliance with ISO 26262 for software SEooC, while avoiding unnecessary activities not applicable to the S-CORE context.
+The :term:`Project Lead Circle` is the highest project-level escalation body
+within S-CORE. Applicable Eclipse Foundation governance remains authoritative
+for matters within its scope.
+
+Escalation is required, for example, when:
+
+* a safety issue cannot be resolved at Module or Feature Team level;
+* required resources for mandatory safety activities are unavailable;
+* a significant deviation from an approved Safety Plan cannot be resolved;
+* disagreement exists regarding the disposition of a safety anomaly;
+* a required safety activity cannot be completed as planned; or
+* an unresolved safety issue may affect release readiness.
+
+Significant safety-related escalations and their disposition shall be documented
+and traceable.
+
+S-CORE applies those ISO 26262 lifecycle activities that are applicable to the
+development of the software platform as a SEooC. Activities outside the S-CORE
+development scope are addressed through the documented tailoring and the
+corresponding SEooC assumptions.
+
+Project governance phases defined by the Eclipse Foundation and the S-CORE
+functional safety lifecycle serve different purposes. Eclipse project maturity
+or lifecycle status does not by itself demonstrate completion of the applicable
+functional safety activities.
+
+Functional safety readiness is determined from completion and adequacy of the
+applicable safety activities and work products, their verification, and the
+results of the defined functional safety assurance activities.
+
+Platform-level safety activities are planned through this Safety Management
+Plan and the Platform Safety Plan. Module-specific safety activities are planned
+through the corresponding Module Safety Plans.
+
+Changes to safety-related Features or Modules shall trigger an impact analysis
+to determine which safety activities and work products need to be created,
+updated, or repeated.
+
 
 Functional Safety Requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Requirement Engineering is defined in the process description. See :need:`doc__project_mgt_plan`.
+Functional safety requirements engineering is performed according to the
+applicable S-CORE requirements engineering processes.
 
-The application of ISO 26262 standards requirements is realized by defining process guidances and matching those to the ISO 26262 requirements (see e.g. for example :need:`gd_req__safety_doc_status`).
+Applicable ISO 26262 requirements are mapped to the corresponding S-CORE
+processes, guidance, activities, and work products. See, for example,
+:need:`gd_req__safety_doc_status`.
+
 
 Functional Safety Schedule
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-The schedule is defined in section "Platform Safety Plan" below, but also within each module safety plan. See linked issues below and in :need:`gd_temp__module_safety_plan`.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Platform-level safety activities and milestones are defined by the Platform
+Safety Plan below and tracked through the project planning infrastructure.
+
+Module-specific safety activities and milestones shall be defined in the
+corresponding Module Safety Plan using
+:need:`gd_temp__module_safety_plan`.
+
 
 Functional Safety Development
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The SW development is defined in the project-wide software development plan. See :doc:`software_development`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Software development activities applicable to safety-related software are
+defined in :doc:`software_development`.
+
 
 Functional Safety Verification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The platform management plan defines the :doc:`software_verification`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Verification of safety-related software and work products is performed according
+to :doc:`software_verification`.
+
 
 Functional Safety Tool Management
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The platform management plan defines :doc:`tool_management`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Tools used for safety-related development activities are managed according to
+:doc:`tool_management`.
+
 
 Functional Safety Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The work products relevant for a module development is defined within each module safety management plan. See :need:`gd_temp__module_safety_plan`.
-Generic project wide work products are defined below.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Project-wide functional safety work products are defined by this Safety
+Management Plan, the Platform Safety Plan, and the applicable processes.
+
+Module-specific functional safety work products shall be identified and planned
+in the corresponding Module Safety Plan using
+:need:`gd_temp__module_safety_plan`.
+
 
 Functional Safety Quality Criteria
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The platform management plan defines :doc:`quality_management`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Quality management and the general quality criteria applicable to safety-related
+work products are defined in :doc:`quality_management`.
+
 
 Platform Safety Plan / Package
-++++++++++++++++++++++++++++++
+------------------------------
+
+The Platform Safety Plan defines and tracks the project-wide functional safety
+work products required for the planned S-CORE platform release.
+
+The Platform Safety Package collects the resulting safety evidence and provides
+the basis for evaluating the functional safety status of the corresponding
+platform baseline.
+
+The tables below provide the current status of the applicable project-wide work
+products.
 
 .. _sw_platform_wp_list:
 
 Functional Safety/Security Management SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: SW Platform work products
     :header-rows: 1
@@ -415,7 +802,7 @@ Functional Safety/Security Management SW Platform Work Products
 
 
 Functional Safety Specific SW Platform Work Products
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: SW Platform safety work products
     :header-rows: 1
@@ -467,44 +854,79 @@ Functional Safety Specific SW Platform Work Products
 
     * - :need:`wp__safety_tailoring` (generic)
       - :ndf:`copy('status', need_id='wf__def_app_process_description')`
-      - :need:`wp__tailoring_work_products` & :need:`doc__score_platform_safety_plan`
+      - :need:`wp__tailoring_work_products` & :need:`doc__platform_safety_management_plan`
       - :ndf:`copy('status', need_id='wp__tailoring_work_products')`
 
-Process status: Status of the workflow which "outputs" the work product, derived from the docs it "has" and guidances it "contains".
+The **Process Status** represents the status of the workflow responsible for
+producing or maintaining the corresponding work product. It is derived from the
+status of the process documentation and guidance associated with that workflow.
 
-Link to project planning: `Platform safety work product issue for V1.0 <https://github.com/eclipse-score/score/issues/2465>`_
+Platform-level safety work for the applicable release is planned and tracked
+through the corresponding project planning issue.
 
-Platform Management Plan - Feature Work Product Lists
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Feature and Module Safety Planning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html>`__
+Safety-related work products for individual Features and Modules are defined by
+their respective safety planning.
 
-:need:`doc__com_ipc_safety_wp`
+The currently available safety planning includes:
 
-`Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`__
+* `Baselibs Safety Planning <https://eclipse-score.github.io/baselibs/main/features/safety_planning/index.html>`_
+* :need:`doc__com_ipc_safety_wp`
+* `Lifecycle Safety Planning <https://eclipse-score.github.io/lifecycle/main/features/lifecycle/safety_planning/index.html>`_
+* `Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`_
+  for Freedom from Interference (FFI) capability
+* `Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`_
 
-`Logging Safety Planning <https://eclipse-score.github.io/logging/main/features/logging/safety_planning/index.html>`__ (FFI capability only)
+The planned Feature scope is defined by :ref:`releases`.
 
-`Persistency Safety Planning <https://eclipse-score.github.io/persistency/main/features/persistency/safety_planning/index.html>`__
+A Feature that is part of the planned release scope but is not represented by
+applicable safety planning shall not be considered safety-planned.
 
+.. note::
 
-Note: planned list of features according to :ref:`releases` - all features missing in the above list have no safety planning performed.
+   Freedom from Interference (FFI) means in this context that the functionality
+   of the respective Feature may itself be developed as QM, while the interfaces
+   and resources provided by the Feature are designed and constrained such that
+   their use by an ASIL component does not adversely affect the safety-related
+   behavior of that component.
 
-Note2: FFI is "Freedom from Interference" and means in this context that the feature's function is delivered in QM quality
-but the API offered by the feature can be used by ASIL components without harm to their safety function.
 
 
 Platform Management Plan - Documents Status Chart
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See :ref:`doc_platform_management_plan`
+See :ref:`doc_platform_management_plan`.
 
-Deviations from Platform Safety Plan
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following deviations from the platform safety plan are present in the platform safety package.
-These are deviations from planned processes execution and/or work product results,
-safety anomalies in the sense of known bugs in the software are reported in the release notes (of the platform's modules).
+Deviations from the Platform Safety Plan
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<Describe here the deviations, whether they have an impact on platform safety functions,
-how these can be mitigated or argued and if and when a resolution is planned.>
+Deviations from the approved Platform Safety Plan shall be identified,
+documented, assessed, and dispositioned as part of the Platform Safety Package.
+
+A deviation may relate to:
+
+* a planned safety activity that was not performed or was performed differently
+  from the approved plan;
+* a required work product that is incomplete or deviates from its defined
+  quality criteria;
+* a planned verification or review activity that could not be completed;
+* a change in assumptions, dependencies, or scope affecting the Safety Plan; or
+* another deviation from the planned functional safety lifecycle.
+
+For each deviation, the following information shall be documented:
+
+* description of the deviation;
+* affected activity, requirement, or work product;
+* impact on functional safety;
+* applicable mitigation or rationale;
+* responsible role;
+* planned resolution, where required; and
+* status of the deviation.
+
+Software defects and safety anomalies are not treated as Safety Plan deviations
+unless they also represent a deviation from the planned safety activities or
+processes. They shall be tracked through the applicable problem-resolution
+process and reported in the corresponding release documentation where required.

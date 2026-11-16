@@ -53,8 +53,9 @@ For the S-CORE Platform the following functional safety related stakeholder requ
 .. needtable:: Assumed Platform Safety Requirements
    :filter: type == "stkh_req" and is_external == False and safety == "ASIL_B" and reqtype == "Functional"
    :style: table
-   :columns: title; id; status; safety
-   :colwidths: 30,30,15,15
+   :columns: title; id; status; safety; valid_from
+   :colwidths: 30,30,15,15,15
+   :sort: title
 
 Assumptions of Use
 ------------------

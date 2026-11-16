@@ -331,8 +331,8 @@ Quality Management Generic work products
       - :ndf:`copy('status', need_id='doc__score_platform_safety_manual')`
 
     * - :need:`wp__platform_safety_plan`
-      - :need:`doc__score_platform_safety_plan`
-      - :ndf:`copy('status', need_id='doc__score_platform_safety_plan')`
+      - :need:`doc__platform_safety_management_plan`
+      - :ndf:`copy('status', need_id='doc__platform_safety_management_plan')`
 
     * - :need:`wp__platform_security_manual`
       - -

@@ -254,7 +254,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
    If the system using the SW-platform has safety goals, the system integrator shall check for correctness and completeness of SW-platform testing and add verification where needed.
 
    Note: The SW-platform integration tests provided by S-CORE for :need:`aou_req__platform__testing` are for demonstration purpose only,
-   as described in the tailoring section of :need:`doc__score_platform_safety_plan` and thus do not claim correctness and completeness.
+   as described in the tailoring section of :need:`doc__platform_safety_management_plan` and thus do not claim correctness and completeness.
 
 .. aou_req:: Unit test execution across build configurations and target systems
    :id: aou_req__platform__ut_execution_consistency
@@ -294,7 +294,7 @@ This is the highest level of integration. This is the level where the S-CORE SW-
 
    If the system using the SW-platform has safety goals, the system integrator shall
    perform the following safety related confirmation measures on the S-CORE platform,
-   because those are tailored out in :need:`doc__score_platform_safety_plan`:
+   because those are tailored out in :need:`doc__platform_safety_management_plan`.
 
    * safety assessment
    * confirmation review (using as input :need:`wp__fdr_reports` on platform and module levels)

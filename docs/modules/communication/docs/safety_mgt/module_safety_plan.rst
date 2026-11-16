@@ -28,7 +28,7 @@ Module Safety Plan
 Functional Safety Management Context
 ====================================
 
-This Safety Plan adds to the :need:`doc__score_platform_safety_plan` all the module development relevant work products needed for ISO 26262 conformity.
+This Safety Plan adds to the :need:`doc__platform_safety_management_plan` all the module development relevant work products needed for ISO 26262 conformity.
 
 Functional Safety Management Scope
 ==================================
@@ -55,7 +55,7 @@ Functional Safety Management Roles
 Tailoring
 =========
 
-Additional to the tailoring in the SW platform project as defined in the :need:`doc__score_platform_safety_plan` we define here the additional tailoring on module level.
+Additional to the tailoring in the SW platform project as defined in the :need:`doc__platform_safety_management_plan` we define here the additional tailoring on module level.
 
 - tailoring is as described in the work products lists based on the component classification.
 

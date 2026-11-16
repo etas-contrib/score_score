@@ -184,7 +184,7 @@ Project structure and processes
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       Read about our project and organization structure in the
       `Project Handbook <https://eclipse-score.github.io/score/main/platform_management_plan/project_management.html>`_.
-      And learn how we deal with :ref:`Platform Safety Plan <score_platform_safety_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
+      And learn how we deal with :ref:`Platform Safety Management Plan <platform_safety_management_plan>` or care about :ref:`Software Verification Plan <software_verification_plan>`.
 
 Reference Integration
 ---------------------

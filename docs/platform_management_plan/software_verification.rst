@@ -196,7 +196,7 @@ S-CORE defines three verification levels:
 
    These verification levels correspond conceptually to the software verification and integration activities addressed
    by ISO 26262-6, Clauses 9 to 11. Their application within S-CORE is subject to the tailoring defined in
-   :need:`doc__score_platform_safety_plan`.
+   :need:`doc__platform_safety_management_plan`.
 
    S-CORE does not claim to provide complete target-system integration verification. Complete integration and
    verification of S-CORE within a specific target system is the responsibility of the downstream integrator.
