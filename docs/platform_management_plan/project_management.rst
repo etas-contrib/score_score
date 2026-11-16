@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Project Management Plan
+.. document:: PF Project Management Plan
    :id: doc__project_mgt_plan
    :status: valid
    :version: 1
@@ -23,874 +23,629 @@
 
 .. _pmp_pm_plan:
 
-Project Management Plan
------------------------
+
+
+PF Project Management Plan
+==========================
 
 Purpose
-+++++++
-The purpose of the Project Management Plan is to define
+-------
 
-- how to manage, analyse and control changes of the work products during the project life cycle.
-- the project stakeholder and how to communicate with them.
-- how and where to create and maintain the project schedule.
-- how to track planned work.
-- how and where to escalate.
+The Project Management Plan defines the organizational and management framework
+for planning, coordinating, monitoring, and controlling the S-CORE project
+throughout its lifecycle.
+
+In particular, this plan defines:
+
+* the project organization, stakeholders, roles, and responsibilities;
+* the communication, coordination, and reporting mechanisms;
+* the approach for planning, scheduling, and tracking project work;
+* the management of milestones, releases, and dependencies;
+* the mechanisms for monitoring project progress and identifying deviations;
+* the escalation paths for issues that cannot be resolved within the responsible
+  team or organizational unit; and
+* the project management records and infrastructure used to provide transparency
+  and traceability.
+
 
 Objectives and Scope
-++++++++++++++++++++
+--------------------
 
 Project Management Goals and Definition of Done
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*  The stakeholders/stakeholder groups and organization are defined:
-    - :ref:`Org Chart and structure description <pmp_pm_organization>` is available and up to date.
-* Communication and reporting paths are described:
-    - Team Overview with meeting structure is available & Slack channels are established and maintained.
-    - Meetings are scheduled in the Eclipse SDV calendar.
-* The scope of the work is defined.
-    - S-CORE Handbook (:need:`doc__platform_handbook`) is available and up to date.
-    - :ref:`Features <features>` are described.
-* Project Plan is planned and followed:
-    - Roadmap with :ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>` are available and up to date.
-    - :ref:`Features <features>` are described.
-* Escalation paths are described.
-* All Reviews are performed according to their definitions, the respective templates are used.
+The project management activities are considered adequately established and
+maintained when the following objectives are fulfilled:
+
+* **Project organization is defined and maintained.**
+
+  * The :ref:`Organization and Structure <pmp_pm_organization>` is documented
+    and kept up to date.
+  * Relevant organizational units, responsibilities, and interfaces are defined.
+
+* **Communication and reporting mechanisms are established.**
+
+  * The team structure and recurring meeting structure are documented.
+  * Required communication channels are established and maintained.
+  * Project meetings are scheduled in the Eclipse S-CORE calendar.
+  * Relevant decisions and meeting outcomes are documented.
+
+* **The project scope is defined and maintained.**
+
+  * The S-CORE Handbook (:need:`doc__platform_handbook`) is available and
+    maintained.
+  * :ref:`Features <features>` are defined and maintained.
+
+* **Project work is planned and tracked.**
+
+  * The project roadmap is maintained.
+  * :ref:`Milestones <pmp_pm_milestone>` and
+    :ref:`Releases <pmp_pm_release>` are defined and tracked.
+  * Planned work is represented by the applicable work-item hierarchy.
+  * Progress and deviations from the plan are regularly monitored.
+
+* **Escalation paths are defined.**
+
+  * Issues that cannot be resolved within the responsible team are escalated
+    through the defined project organization.
+
+* **Required reviews are performed.**
+
+  * Reviews are performed according to their applicable definitions.
+  * The corresponding review templates and records are used and maintained.
+
 
 .. _pmp_pm_organization:
 
 Project Organization
-++++++++++++++++++++
+--------------------
 
+The S-CORE project organization consists of Steering Committees, Communities,
+and Feature Teams. Together, these organizational units provide project
+governance, cross-functional coordination, and responsibility for implementation.
 
-Org Chart and Main Platform Management Plan Responsibilities
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The current organizational structure is documented in the
+`S-CORE organization description
+<https://github.com/orgs/eclipse-score/discussions/3472>`_.
 
-.. image:: _assets/score_project_management_organization_orgchart.drawio.svg
-   :width: 900
-   :alt: Infrastructure overview
-   :align: center
 
 .. _pmp_pm_steering_committees:
 
 Steering Committees
-^^^^^^^^^^^^^^^^^^^
-Steering of the project is done with the help of *Lead Circles*.
-The combined :term:`Project Lead Circle (PLC/TLC)` coordinates strategic
-project and technical decisions.
+~~~~~~~~~~~~~~~~~~~
 
-.. _PLCTLCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _PLCTLCSPK: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _PLCTLCMM: https://github.com/eclipse-score/score/wiki/TLCM
-.. _PLCTLCSLC: https://sdvworkinggroup.slack.com/archives/C085F44D2CS
-.. _PLCTLCBKL: https://github.com/orgs/eclipse-score/projects/3
+Project-level steering is performed through the established *Lead Circles*.
 
-.. list-table:: Steering
-   :header-rows: 1
-   :widths: 22,7,7,7,7,7,24
+The combined :term:`Project Lead Circle` coordinates strategic project decisions
+and provides alignment between project management and technical direction.
 
-   * - Purpose
-     - Members
-     - Speaker
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-
-   * - .. _pmp_pm_plctlc:
-
-       **PLC/TLC**
-     - **Project/Technical**
-     - **Lead**
-     - **Circle**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - Decisions about strategical topics
-       - Triage of incoming Feature Requests, routing platform-level and cross-Feature-Team requests to the FEP Track
-       - Project Management
-       - High-level project control and coordination between multiple software modules.
-       - Deciding of adding / removing Repositories
-       - Planning and Approval of Releases
-       - Escalation instance
-
-     - `PLCTLCMBRS`_
-     - `PLCTLCSPK`_
-     - `PLCTLCMM`_
-     - `PLCTLCSLC`_
-     - `PLCTLCBKL`_
-     - - https://github.com/eclipse-score/score
 
 .. _pmp_pm_communities:
 
 Communities
-^^^^^^^^^^^
-*Communities* are installed to work on cross functional topics, such as program level architectural decisions,
-commonly used development & testing infrastructure, processes or final integration & release.
-Each *Community* has a :term:`Community Lead` to organize the community`s work.
+~~~~~~~~~~~
 
-.. _ARCMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _ARCLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _ARCMM: https://github.com/eclipse-score/score/wiki/ARCM
-.. _ARCSLC: https://sdvworkinggroup.slack.com/archives/C08C1HG5AKY
-.. _ARCBKL: https://github.com/orgs/eclipse-score/projects/3
+*Communities* coordinate cross-functional topics that span multiple Feature
+Teams. Typical responsibilities include:
 
-.. _INFMBRS: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _INFLD: https://github.com/eclipse-score/score/blob/main/.github/CODEOWNERS
-.. _INFMM: https://github.com/eclipse-score/score/wiki/INFM
-.. _INFSLC: https://sdvworkinggroup.slack.com/archives/C0894QGRZDM
-.. _INFBKL: https://github.com/orgs/eclipse-score/projects/6
+* project-level architectural decisions;
+* common development and testing infrastructure;
+* engineering and project processes; and
+* integration and release activities.
 
-.. _PRCMBRS: https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS
-.. _PRCLD: https://github.com/eclipse-score/process_description/blob/main/.github/CODEOWNERS
-.. _PRCMM: https://github.com/eclipse-score/score/wiki/PRCM
-.. _PRCSLC: https://sdvworkinggroup.slack.com/archives/C0864L05332
-.. _PRCBKL: https://github.com/orgs/eclipse-score/projects/21
-.. _PIMBKL: https://github.com/orgs/eclipse-score/projects/7
+Each *Community* has a :term:`Community Lead` responsible for coordinating the
+community's activities.
 
-.. _TSTMBRS: https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS
-.. _TSTLD: https://github.com/eclipse-score/itf/blob/main/.github/CODEOWNERS
-.. _TSTMM: https://github.com/eclipse-score/score/wiki/TSTM
-.. _TSTSLC: https://sdvworkinggroup.slack.com/archives/TSTC08B6C78EF3
-.. _TSTBKL: https://github.com/orgs/eclipse-score/projects/5
-
-.. _INTMBRS: https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS
-.. _INTLD: https://github.com/eclipse-score/reference_integration/blob/main/.github/CODEOWNERS
-.. _INTMM: https://github.com/eclipse-score/score/wiki/INTM
-.. _INTSLC: https://sdvworkinggroup.slack.com/archives/INT
-.. _INTBKL: https://github.com/orgs/eclipse-score/projects/INT
-
-.. _MCMMBRS: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-team
-.. _MCMLD: https://github.com/orgs/eclipse-score/teams/automotive-score-MCM-lead
-.. _MCMMM: https://github.com/eclipse-score/score/wiki/MCMM
-.. _MCMSLC: https://sdvworkinggroup.slack.com/archives/C032X75QGTT
-.. _MCMBKL: https://github.com/orgs/eclipse-score/projects/11
-
-
-.. list-table:: Community
-   :header-rows: 1
-   :widths: 22,7,7,7,7,7,24
-
-   * - Purpose
-     - Members
-     - Lead
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-   * - .. _pmp_pm_arc:
-
-       **ARC**
-     - **Architecture**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - clarification of software architecture topics, e.g. discussion of new features or coding guidelines
-     - `ARCMBRS`_
-     - `ARCLD`_
-     - `ARCMM`_
-     - `ARCSLC`_
-     - `ARCBKL`_
-     - https://github.com/eclipse-score/score
-   * - .. _pmp_pm_prc:
-
-       **PRC**
-     - **Process**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - defining and maintaining the software development process (incl. safety, security and quality)
-       - defining and maintaining the process implementation (PIM)
-     - `PRCMBRS`_
-     - `PRCLD`_
-     - `PRCMM`_
-     - `PRCSLC`_
-     - `PRCBKL`_
-       `PIMBKL`_
-     - | https://github.com/eclipse-score/process_description
-       | https://github.com/eclipse-score/score
-   * - .. _pmp_pm_inf:
-
-       **INF**
-     - **Infrastructure**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - providing and maintaining the development infrastructure: Compiler, IDE, build toolchains
-     - `INFMBRS`_
-     - `INFLD`_
-     - `INFMM`_
-     - `INFSLC`_
-     - `INFBKL`_
-     - | Toolchain Repositories:
-
-          | https://github.com/eclipse-score/bazel_platforms
-          | https://github.com/eclipse-score/toolchains_gcc
-          | https://github.com/eclipse-score/toolchains_gcc_packages
-          | https://github.com/eclipse-score/toolchains_qnx
-          | https://github.com/eclipse-score/toolchains_rust
-
-       | Tooling Repositories:
-
-          | https://github.com/eclipse-score/devcontainer
-          | https://github.com/eclipse-score/docs-as-code
-          | https://github.com/eclipse-score/tooling
-
-       | other Repositories:
-
-          | https://github.com/eclipse-score/apt-install
-          | https://github.com/eclipse-score/cicd-workflows
-          | https://github.com/eclipse-score/bazel_registry
-          | https://github.com/eclipse-score/bazel_registry_ui
-          | https://github.com/eclipse-score/.eclipsefdn
-          | https://github.com/eclipse-score/examples
-
-   * - .. _pmp_pm_tst:
-
-       **TST**
-     - **Testing**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - defining and maintaining testing strategy and infrastructure
-     - `TSTMBRS`_
-     - `TSTLD`_
-     - `TSTMM`_
-     - `TSTSLC`_
-     - `TSTBKL`_
-     - | https://github.com/eclipse-score/itf
-       | https://github.com/eclipse-score/testing_tools
-   * - .. _pmp_pm_int:
-
-       **INT**
-     - **Integration &**
-     - **Release**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - integration of available modules to one or several reference integrations
-       - releasing
-
-     - `INTMBRS`_
-     - `INTLD`_
-     - `INTMM`_
-     - `INTSLC`_
-     - `INTBKL`_
-     - | https://github.com/eclipse-score/reference_integration
-   * - .. _pmp_pm_mcm:
-
-       **MCM**
-     - **Integration &**
-     - **Release**
-     - **Community**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - coordination of public relations, e.g. the maintenance of the website & organization of general events
-     - `MCMMBRS`_
-     - `MCMLD`_
-     - `MCMMM`_
-     - `MCMSLC`_
-     - `MCMBKL`_
-     - | https://github.com/eclipse-score/eclipse-score.github.io
-       | https://github.com/eclipse-score/eclipse-score-website
-       | https://github.com/eclipse-score/eclipse-score-website-preview
-       | https://github.com/eclipse-score/eclipse-score-website-published
 
 .. _pmp_pm_feature_teams:
 
 Feature Teams
-^^^^^^^^^^^^^
-*Feature Teams*  have end-to-end responsibility for providing specific functionalities. This includes all
-development aspects beginning with the architecture definition to the integration test.
-One *Team* may work independently of other *Teams* on the team-assigned *GitHub Issues*,
-and needs at least one :need:`Committer <rl__committer>` who can approve & merge the Pull Requests.
-Each *Feature Team* has one *Lead* to organize the Team`s work.
+~~~~~~~~~~~~~
 
-.. _BASMBRS: https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS
-.. _BASLD: https://github.com/eclipse-score/baselibs/blob/main/.github/CODEOWNERS
-.. _BASMM: https://github.com/eclipse-score/score/wiki/BASM
-.. _BASSLC: https://sdvworkinggroup.slack.com/archives/C090UKSL5L2
-.. _BASBKL: https://github.com/orgs/eclipse-score/projects/24
+*Feature Teams* have end-to-end responsibility for delivering defined
+functionality. Their responsibility covers the relevant development lifecycle,
+from requirements and architecture through implementation and integration testing.
 
-.. _COMMBRS: https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS
-.. _COMLD: https://github.com/eclipse-score/communication/blob/main/.github/CODEOWNERS
-.. _COMMM: https://github.com/eclipse-score/score/wiki/COMM
-.. _COMSLC: https://sdvworkinggroup.slack.com/archives/C08C0JATADP
-.. _COMBKL: https://github.com/orgs/eclipse-score/projects/19
+Feature Teams organize and track their work through the assigned *GitHub Issues*
+and project infrastructure.
 
-.. _CFGMBRS: https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS
-.. _CFGLD: https://github.com/eclipse-score/inc_config_management/blob/main/.github/CODEOWNERS
-.. _CFGMM: https://github.com/eclipse-score/score/wiki/CFGM
-.. _CFGSLC: https://sdvworkinggroup.slack.com/archives/CFG
-.. _CFGBKL: https://github.com/orgs/eclipse-score/projects/CFG
+Each Feature Team:
 
-.. _FEOMBRS: https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS
-.. _FEOLD: https://github.com/eclipse-score/feo/blob/main/.github/CODEOWNERS
-.. _FEOMM: https://github.com/eclipse-score/score/wiki/FEOM
-.. _FEOSLC: https://sdvworkinggroup.slack.com/archives/FEO
-.. _FEOBKL: https://github.com/orgs/eclipse-score/projects/9
+* has a designated *Feature Team Lead* responsible for coordinating the team's
+  activities;
+* plans and tracks its work within the corresponding GitHub Project;
+* maintains the work products within its scope; and
+* has at least one :need:`Committer <rl__committer>` with the authority to
+  approve and merge Pull Requests.
 
-.. _KYRMBRS: https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS
-.. _KYRLD: https://github.com/eclipse-score/kyron/blob/main/.github/CODEOWNERS
-.. _KYRMM: https://github.com/eclipse-score/score/wiki/KYRM
-.. _KYRSLC: https://sdvworkinggroup.slack.com/archives/KYR
-.. _KYRBKL: https://github.com/orgs/eclipse-score/projects/38
-
-.. _LCMMBRS: https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS
-.. _LCMLD: https://github.com/eclipse-score/lifecycle/blob/main/.github/CODEOWNERS
-.. _LCMMM: https://github.com/eclipse-score/score/wiki/LCMM
-.. _LCMSLC: https://sdvworkinggroup.slack.com/archives/C094Z3BN1K4
-.. _LCMBKL: https://github.com/orgs/eclipse-score/projects/33
-
-.. _LOGMBRS: https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS
-.. _LOGLD: https://github.com/eclipse-score/logging/blob/main/.github/CODEOWNERS
-.. _LOGMM: https://github.com/eclipse-score/score/wiki/LOGM
-.. _LOGSLC: https://sdvworkinggroup.slack.com/archives/C089XP2PGQZ
-.. _LOGBKL: https://github.com/orgs/eclipse-score/projects/31
-
-.. _ORCMBRS: https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS
-.. _ORCLD: https://github.com/eclipse-score/orchestrator/blob/main/.github/CODEOWNERS
-.. _ORCMM: https://github.com/eclipse-score/score/wiki/ORCM
-.. _ORCSLC: https://sdvworkinggroup.slack.com/archives/C099W80FU2C
-.. _ORCBKL: https://github.com/orgs/eclipse-score/projects/29
-
-.. _PERMBRS: https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS
-.. _PERLD: https://github.com/eclipse-score/persistency/blob/main/.github/CODEOWNERS
-.. _PERMM: https://github.com/eclipse-score/score/wiki/PERM
-.. _PERSLC: https://sdvworkinggroup.slack.com/archives/C08B339ETQU
-.. _PERBKL: https://github.com/orgs/eclipse-score/projects/20
-
-.. list-table:: Feature Teams
-   :header-rows: 1
-   :widths: 22,7,7,7,7,7,24
-
-   * - Purpose
-     - Members
-     - Lead
-     - Meeting Minutes
-     - Slack Channel
-     - Backlog
-     - Owned Repository
-   * - .. _pmp_pm_bas:
-
-       **BAS**
-     - **Baselibs**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of the base libraries
-     - `BASMBRS`_
-     - `BASLD`_
-     - `BASMM`_
-     - `BASSLC`_
-     - `BASBKL`_
-     - | https://github.com/eclipse-score/baselibs
-       | https://github.com/eclipse-score/baselibs_rust
-   * - .. _pmp_pm_com:
-
-       **COM**
-     - **Communication**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of the communication and protocols
-     - `COMMBRS`_
-     - `COMLD`_
-     - `COMMM`_
-     - `COMSLC`_
-     - `COMBKL`_
-     - | https://github.com/eclipse-score/communication
-       | https://github.com/eclipse-score/inc_mw_com
-       | https://github.com/eclipse-score/inc_someip_gateway
-   * - .. _pmp_pm_cfg:
-
-       **CFG**
-     - **Configuration**
-     - **Management**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------------------**
-   * - - development of configuration management
-     - `CFGMBRS`_
-     - `CFGLD`_
-     - `CFGMM`_
-     - `CFGSLC`_
-     - `CFGBKL`_
-     - | https://github.com/eclipse-score/config_management
-       | https://github.com/eclipse-score/inc_config_management
-   * - .. _pmp_pm_feo:
-
-       **FEO**
-     - **Fixed**
-     - **Execution**
-     - **Order**
-     - **Feature**
-     - **Team**
-     - **-----------------------**
-   * - - development of fixed execution order
-     - `FEOMBRS`_
-     - `FEOLD`_
-     - `FEOMM`_
-     - `FEOSLC`_
-     - `FEOBKL`_
-     - | https://github.com/eclipse-score/feo
-       | https://github.com/eclipse-score/inc_feo
-   * - .. _pmp_pm_kyr:
-
-       **KYR**
-     - **Kyron**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of Kyron
-     - `KYRMBRS`_
-     - `KYRLD`_
-     - `KYRMM`_
-     - `KYRSLC`_
-     - `KYRBKL`_
-     - | https://github.com/eclipse-score/kyron
-   * - .. _pmp_pm_log:
-
-       **LOG**
-     - **Logging**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of Logging
-     - `LOGMBRS`_
-     - `LOGLD`_
-     - `LOGMM`_
-     - `LOGSLC`_
-     - `LOGBKL`_
-     - | https://github.com/eclipse-score/logging
-       | https://github.com/eclipse-score/inc_mw_log
-
-   * - .. _pmp_pm_lcm:
-
-       **LCM**
-     - **Lifecycle**
-     - **Management &**
-     - **Health Monitoring**
-     - **Feature**
-     - **Team**
-     - **-----------------------**
-   * - - development of Lifecycle Management and Health Monitoring
-     - `LCMMBRS`_
-     - `LCMLD`_
-     - `LCMMM`_
-     - `LCMSLC`_
-     - `LCMBKL`_
-     - | https://github.com/eclipse-score/lifecycle
-
-   * - .. _pmp_pm_ocr:
-
-       **OCR**
-     - **Orchestrator**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of Orchestrator
-     - `ORCMBRS`_
-     - `ORCLD`_
-     - `ORCMM`_
-     - `ORCSLC`_
-     - `ORCBKL`_
-     - | https://github.com/eclipse-score/orchestrator
-   * - .. _pmp_pm_per:
-
-       **PER**
-     - **Persistency**
-     - **Feature**
-     - **Team**
-     - **-----------**
-     - **-----------**
-     - **-----------------------**
-   * - - development of Persistency
-     - `PERMBRS`_
-     - `PERLD`_
-     - `PERMM`_
-     - `PERSLC`_
-     - `PERBKL`_
-     - | https://github.com/eclipse-score/persistency
 
 Organization Management
-^^^^^^^^^^^^^^^^^^^^^^^
-Decision to adapt the *Project Organization* is done in the *Technical Lead Circle* / *Project Management Circle*, documented in the meeting minutes and planned with a *Task*:
+~~~~~~~~~~~~~~~~~~~~~~~
 
-- creating of a new Team (*Community* or *Feature Team*)
-- setting an existing Team (*Community* or *Feature Team*) on hold
-- deleting an existing Team (*Community* or *Feature Team*)
+Changes to the project organization are decided by the responsible Lead Circle
+and documented in the corresponding meeting records.
 
-Creation of a new Feature Team
-""""""""""""""""""""""""""""""
-In case a new Feature Team creation is necessary, the following steps have to be done:
+Implementation of an approved organizational change shall be tracked by a
+*Task*.
 
-- `Adding a new Team to GitHub Teams <https://github.com/orgs/eclipse-score/teams>`_ and adding the Core Members by editing
-  `orgs.newTeam <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_.
-- Adding a new Repository to GitHub by editing
-  `orgs.newRepo <https://github.com/eclipse-score/.eclipsefdn/blob/main/otterdog/eclipse-score.jsonnet>`_.
-- Definition of Repository specific :ref:`CODEOWNERS <pmp_pm_codeowners>`.
-- `Creation of a Team GitHub Project <https://github.com/orgs/eclipse-score/projects>`_ with a Kanban View and a Task View.
-- `Creation of a Team Meeting Wiki <https://github.com/eclipse-score/score/wiki>`_ for the meeting minutes
-- Creation of a Team Label
+Organizational changes include, in particular:
 
-.. code::
+* creation of a new Community or Feature Team;
+* temporary suspension of an existing Community or Feature Team; and
+* dissolution of an existing Community or Feature Team.
 
-    committee:<Name of Committee>,
-    community:<Name of Community> or
-    ft:<Name of Feature Team>
 
-- Creation of a Slack Channel: https://sdvworkinggroup.slack.com
-- Adapting the PMP
+Creation of a New Feature Team
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a new Feature Team is established, the following project infrastructure
+shall be created or adapted as applicable:
+
+* create the corresponding GitHub Team and assign its core members;
+* create the required GitHub repository;
+* define repository-specific :ref:`CODEOWNERS <pmp_pm_codeowners>`;
+* create the Team GitHub Project with the required planning and tracking views;
+* establish a location for meeting records;
+* create the applicable organizational label;
+* create the corresponding Slack channel; and
+* update this Project Management Plan and other affected project documentation.
+
+
+Communication
+-------------
+
+Project communication is organized to ensure transparency of project status,
+decisions, responsibilities, and planned work.
+
 
 External Communication
-**********************
-The external communication is done via GitHub, LinkedIn, etc. Publications by :ref:`Marketing and Communication Community <pmp_pm_mcm>`.
+~~~~~~~~~~~~~~~~~~~~~~
+
+External project communication is performed through the project's public
+communication channels, including GitHub and other communication platforms
+approved by the project.
+
+Project-wide publications and coordinated external communication are managed by
+the ``Marketing and Communication Community``.
 
 
 Internal Communication
-++++++++++++++++++++++
-The project internal communication is ensured with help of:
+~~~~~~~~~~~~~~~~~~~~~~
 
-- virtual and face-to-face meetings and their minutes
-- *GitHub issues* and *GitHub pull requests*
-- online communication using Slack
+Project-internal coordination is performed primarily through:
+
+* virtual and face-to-face meetings and their documented outcomes;
+* *GitHub Issues* for planning, discussion, and tracking of work;
+* *GitHub Pull Requests* for reviewing and integrating changes; and
+* Slack for direct and asynchronous project communication.
+
 
 Meetings
-^^^^^^^^
-All meetings are scheduled in the `Eclipse S-CORE Calendar <https://calendar.google.com/calendar/u/0/embed?src=c_2ampi2bmoka3qter4dceap1d5g@group.calendar.google.com&ctz=Europe/Berlin>`_ , are open for everyone
-but mentioned team members are mandatory. Meeting minutes are public and stored in the project specific *GitHub Team Wikis*.
+~~~~~~~~
+
+Project meetings shall be scheduled in the Eclipse S-CORE calendar.
+
+Unless explicitly restricted, project meetings are open to the project
+community. Members required for a particular meeting are expected to
+participate.
+
+Relevant meeting outcomes, in particular decisions and action items, shall be
+documented in the applicable public project records.
 
 
 .. _pmp_pm_repository_structure:
 
-Repository structure
-++++++++++++++++++++
-The Platform follows a multiple repositories approach. The root repository is
+Repository Structure
+--------------------
+
+The S-CORE platform follows a multi-repository approach.
+
 
 .. _pmp_pm_root_repository:
 
-https://github.com/eclipse-score.
+Root Repository
+~~~~~~~~~~~~~~~
 
-It contains among others:
+The root repository provides project-wide assets and integration information.
 
-- :ref:`stakeholder requirements <Stakeholder_Requirements>`
-- documentation of all :ref:`platform features <features>`, features flags,
-  feature requirements and architecture
-- build system including *S-CORE* specific *macros* and *rules*
-- integration rules for software modules.
+It contains, among other things:
 
-which are stored in the :ref:`Folder Structure of Platform Repository <platform_folder_structure>`.
+* :ref:`Stakeholder Requirements <Stakeholder_Requirements>`;
+* documentation of :ref:`Platform Features <features>`;
+* feature requirements and architecture;
+* project-wide build infrastructure, including S-CORE-specific macros and rules;
+  and
+* integration rules for software modules.
+
+These artifacts follow the
+:ref:`Platform Repository Folder Structure <platform_folder_structure>`.
 
 
-Every software module has its own repository, that contains among others:
+Module Repositories
+~~~~~~~~~~~~~~~~~~~
 
-- multiple components
-- their requirements
-- architecture
-- implementation
-- tests
+Each software module is maintained in its own repository.
 
-within the following :ref:`Module Folder Structure <module_folder_structure>`.
+A module repository typically contains:
+
+* components;
+* requirements;
+* architecture;
+* implementation; and
+* tests.
+
+Module repositories follow the
+:ref:`Module Folder Structure <module_folder_structure>`.
 
 
 .. _pmp_pm_codeowners:
 
-Codeowners
-^^^^^^^^^^
-While creating a new repository, :ref:`Project / Technical Leads <pmp_pm_plctlc>` nominate initial `CODEOWNERS <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#codeowners-and-branch-protection>`_,
-whose review is mandatory for merging PRs to the repository and who are at the end allowed to merge PRs to the repository as well as maintaining it.
+CODEOWNERS
+~~~~~~~~~~
 
-Possible members are software developers , who
+When a new repository is established, the Project Leads nominate the initial
+repository ``CODEOWNERS``.
 
-- understand how the particular feature works or should work
-- are the initial authors of the software
-- and are :need:`Committers <rl__committer>`
+CODEOWNERS provide technical ownership for defined parts of a repository and
+participate in the review of changes within their area of responsibility.
 
-The Codeownership has to be regularly updated and changes have to be documented.
+Candidates for CODEOWNERS should:
 
-Planning & Tracking
-+++++++++++++++++++
+* have sufficient technical knowledge of the affected feature or component;
+* understand the intended architecture and implementation;
+* preferably have substantial implementation experience in the respective area;
+  and
+* be :need:`Committers <rl__committer>` where merge permissions are required.
+
+CODEOWNERS definitions shall be maintained as project responsibilities evolve.
+Changes to code ownership shall be performed through the normal repository
+change and review process.
+
+
+Planning and Tracking
+---------------------
 
 Cadence
-^^^^^^^
+~~~~~~~
 
 Iteration
-"""""""""
-The Project calendar is divided into iterations. Each iteration is two weeks long.
+^^^^^^^^^
+
+The project schedule is organized into two-week iterations.
+
+Iterations provide the regular cadence for planning, execution, review, and
+progress monitoring.
+
 
 Release Frequency
-"""""""""""""""""
-After every 3rd iteration, the work is baselined into a Release.
+^^^^^^^^^^^^^^^^^
+
+A project release is planned after every second iteration.
+
+A release establishes a defined project baseline according to the applicable
+release management process.
 
 
-Planning & Tracking Infrastructure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The planning and tracking of the work is done inside **GitHub**.
-GitHub **Issues** are used to document all necessary work packages.
+Planning and Tracking Infrastructure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Issues
-^^^^^^
-To organize the work :ref:`Github Types <pmp_pm_issue_types>`,  :ref:`GitHub Labels <pmp_pm_gh_labels>` and
-:ref:`GitHub Projects <pmp_pm_gh_projects>` are used.
-The Progress of the work is documented with help of the :ref:`Status of an Issue <pmp_pm_issue_status_flow>`.
+GitHub is the primary infrastructure for planning and tracking project work.
+
+*GitHub Issues* represent planned and identified work.
+*GitHub Projects* provide project-specific planning and status views.
+Milestones and releases provide higher-level scheduling and baseline information.
 
 
 .. _pmp_pm_issue_types:
 
-Issues Types
-""""""""""""
+Issue Types
+~~~~~~~~~~~
+
+The project uses defined GitHub Issue Types to distinguish the purpose and
+planning level of individual work items.
 
 .. image:: _assets/score_project_management_issue_types.drawio.svg
    :width: 900
    :alt: Issue Types
    :align: center
 
-|
 
 Architectural Issues
-""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^
 
 .. _pmp_pm_feature_request:
 
-**Feature Request**
+Feature Request
+"""""""""""""""
 
-A *Feature Request* represents an independent work package used to describe and
-track a high-level request for the project. *Feature Request* work packages can be linked to
-other work packages, including as a parent to child Task issues used for implementation tracking once a FEP is accepted. *Feature Request* covers new Features as well as significant modifications of existing Features.
+A *Feature Request* represents a high-level request for new platform
+functionality or a significant modification of existing functionality.
 
-Feature Requests are governed by the FEP Track (see the :ref:`Feature & Enhancement Proposal (FEP) <feature_request_guideline>`): the :ref:`Architecture Community <pmp_pm_arc>` owns the review via a Shepherd and Final Comment Period. The :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` triages incoming requests and is notified once a FEP enters its Final Comment Period, for roadmap awareness. Feature Requests are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+Feature Requests are governed by the
+:ref:`Feature and Enhancement Proposal (FEP) <feature_request_guideline>`
+process.
 
-`About Features <https://eclipse-score.github.io/score/main/features/index.html>`_
+The ``Architecture Community`` coordinates the architectural assessment,
+including the Shepherd review and Final Comment Period. The
+:term:`Project Lead Circle` performs the corresponding project-level triage and
+uses accepted Feature Requests as input to project roadmap planning.
 
-`Feature Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1a_FeatureRequest.yml>`_
+Implementation activities resulting from an accepted Feature Request are tracked
+using the applicable planning work items.
+
 
 .. _pmp_pm_component_request:
 
-**Component Request**
+Component Request
+"""""""""""""""""
 
 A *Component Request* represents an independent work package used to describe modifications inside a *Feature*, either adding new components or modifying existing ones.
 *Component Request* work packages can be linked to other work packages, but they must not be treated as parent work packages. They shall be discussed with
-:ref:`Architecture Community <pmp_pm_arc>` and the issues are owned by a Team and are part of the Team`s main repository..
-
-`About Components <https://eclipse-score.github.io/score/main/modules/index.html>`_
+``Architecture Community`` and the issues are owned by a Team and are part of the Team`s main repository.
 
 `Component Request issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/1b_ComponentRequest.yml>`_
 
 
 Planning Issues
-"""""""""""""""
+^^^^^^^^^^^^^^^
+
 
 .. _pmp_pm_product_increment:
 
-**Product Increment**
+Product Increment
+"""""""""""""""""
 
-A *Product Increment* represents the highest level in the work package hierarchy and
-cannot be linked as a child of another issue. If you need to group multiple *Product Increment* work packages,
-labels have to be used. One *Product Increment* is the planning element for a version of a :ref:`Module <modules>`.
-A *Product Increment* can have multiple *Epic* work packages as children. *Product Increments* are owned by
-:ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` and are part of the :ref:`Root Repository <pmp_pm_root_repository>`.
+A *Product Increment* represents the highest level of the project planning
+hierarchy for the development of a version of a :ref:`Module <modules>`.
 
-`Product Increment issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/2_ProductIncrement.yml>`_
+A Product Increment:
+
+* represents a planned module increment;
+* may contain multiple *Epics*;
+* is aligned with the applicable milestones and releases; and
+* is maintained as part of the overall project roadmap.
+
+Product Increments are coordinated by the :term:`Project Lead Circle` and are
+maintained in the :ref:`Root Repository <pmp_pm_root_repository>`.
+
 
 .. _pmp_pm_epic:
 
-**Epic**
+Epic
+""""
 
-An *Epic* is the primary planning work package for development teams.
-*Epic* work packages should be scoped in a way that allows them to be completed within
-a release cycle of the S-CORE project.
-While an *Epic* can be implemented by multiple team members, it is recommended
-that one developer takes main responsibility for its completion. Quality assurance activities,
-such as code reviews, can be performed by other team members.
-*Epics* are typically grouped under an *Product Increment*. However, an *Epic* work package can also exist
-as a standalone work package if its outcome represents a complete functional improvement,
-making a related *Product Increment* work package unnecessary.
-Sometimes support of other teams might be necessary for the completion of the work, therefore an
-*Epic* can have team-internal and team-external *Task* child issues. *Epics* are owned by a Team and are part
-of the Team`s main repository.
+An *Epic* is the primary planning work package used by a Feature Team.
 
-`Epic issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/3_ProductIncrement.yml>`_
+An Epic should be scoped such that it can normally be completed within one
+S-CORE release cycle. It represents a coherent development outcome and may
+contain multiple *Tasks*.
+
+An Epic may exist:
+
+* as part of a Product Increment; or
+* independently when its outcome represents a self-contained improvement that
+  does not require a dedicated Product Increment.
+
+Epics are owned by the responsible Feature Team and maintained in that team's
+repository.
+
 
 .. _pmp_pm_task:
 
-**Task**
+Task
+""""
 
-A *Task GitHub Issue* represents the smallest unit of planning and typically corresponds
-to a concrete piece of work to be completed, such as by a developer. *Task* work packages are usually
-grouped under an *Epic* work package.
-In certain cases, a *Task* may exist as a standalone *GitHub Issue*.
-However, standalone *Task* work packages must not be grouped using labels.
-If multiple *Task* work packages are related, a *Epic* work package should be created instead,
-with all associated *Task* work packages added as child work packages under that *Epic*. *Tasks* are owned by a Team and are part
-of any Team`s repository.
+A *Task* represents the smallest standard unit of planned project work and shall
+describe a concrete, assignable activity.
 
-`Task issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/4_Task.yml>`_
+Tasks are normally created as children of an *Epic*. A standalone Task is
+permitted where creation of an Epic would not provide additional planning value.
+
+Where several related Tasks together constitute a coherent development outcome,
+an Epic should be created and the Tasks assigned to it as child work items.
+
+Tasks are owned by the responsible team and maintained in the applicable
+repository.
+
 
 .. _pmp_pm_bug:
 
-**Bug**
+Bug
+"""
 
-A *Bug GitHub Issue* is used to report any kind of problem or malfunction. It is considered
-a special type of work package and follows the same rules as regular *Epic* work packages,
-with the key difference that it focuses on fixing defects in existing functionality
-rather than creating or extending functionality. *^Bugs* are owned by a Team and are part
-of any Team`s repository.
+A *Bug* represents a defect, malfunction, or unintended behavior in an existing
+project work product.
 
-`Bug issue template <https://github.com/eclipse-score/.github/.github/ISSUE_TEMPLATE/5_Bug.yml>`_
+Bugs are planned and tracked similarly to development work packages but focus on
+restoring or correcting existing functionality rather than introducing new
+functionality.
 
-.. _pmp_pm_issue_status_flow:
+Bugs are owned by the responsible Feature Team and maintained in the applicable
+team repository.
 
-Issue Status
-""""""""""""
-Each *GitHub issue* has a **Status** depending on the :ref:`GitHub Project <pmp_pm_gh_projects>`,
-we use the following Standard Flow for all :ref:`Issue Types <pmp_pm_issue_types>`:
-
-.. image:: _assets/score_project_management_issue_status_flow.drawio.svg
-    :width: 900
-    :alt: Issue Status
-    :align: center
-
-Issue Attributes
-""""""""""""""""
-- Standard Attributes
-    - Assignees
-    - :ref:`Labels <pmp_pm_gh_labels>`
-    - :ref:`Type <pmp_pm_issue_types>`
-- Common Project Attributes
-    - :ref:`Status <pmp_pm_issue_status_flow>`
-    - Priority (1 - High, 2 - Middle, 3 - Low)
-    - Size (S - Day, M - Week, L - Month, XL - Quarter)
-    - (planned finishing) Iteration
-
-
-
-Issue Templates
-"""""""""""""""
-Templates defined in *GitHub* ensure the availability of the type relevant information for all issues.
-
-Hierarchies
-"""""""""""
-Hierarchies are realized as parent-child relations with the `GitHub Sub-Issue Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues>`_.
 
 Dependencies
-""""""""""""
-Dependencies are realized with blocked by or blocking relations described in the `GitHub Issue Dependency Feature <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-issue-dependencies>`_.
+~~~~~~~~~~~~
+
+Dependencies between work items shall be represented using the GitHub
+``blocked by`` and ``blocking`` relationships.
+
+Dependencies that can affect milestones, releases, or other teams shall be made
+visible in the corresponding project planning views.
+
 
 .. _pmp_pm_milestone:
 
-Milestone
-^^^^^^^^^
-A milestone is indicating an important dedicated point in the schedule like
-a Release or a Process Audit, etc.
-`GitHub Milestones <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones>`_ offer to connect *Issues* and *Pull Requests* to the `S-CORE-defined Milestones <https://github.com/eclipse-score/score/milestones>`_
+Milestones
+~~~~~~~~~~
+
+A *Milestone* represents a significant point in the project schedule, such as:
+
+* a project release;
+* an integration milestone;
+* a major project review; or
+* a process or project audit.
+
+GitHub Milestones are used to associate relevant Issues and Pull Requests with
+these project-level planning points.
+
 
 .. _pmp_pm_release:
 
 Releases
-^^^^^^^^
-*Releases* are special milestones and used for baselining of the development activities.
+~~~~~~~~
+
+*Releases* are project milestones that establish defined baselines of the
+development activities and their resulting work products.
+
+Release planning and execution shall follow the applicable S-CORE release
+management process.
+
 
 .. _pmp_pm_gh_labels:
 
-
 Labels
-^^^^^^
-`GitHub Labels <https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels>`_ are used to organize Issues, Pull Requests etc. having same context. Although
-Labels are powerful, the definition of new Labels shall be wisely done and organization wide used.
-Therefore their management is limited to Organization owners.
+~~~~~~
 
-The following `Labels <https://github.com/eclipse-score/score/labels>`_ are defined.
+GitHub Labels provide additional classification of Issues and Pull Requests.
 
-.. _pmp_pm_gh_projects:
+Labels shall complement, rather than replace, dedicated GitHub properties such
+as Issue Type, Status, parent-child relationships, and dependencies.
 
-GitHub Projects
-^^^^^^^^^^^^^^^
-The `GitHub Project Feature <https://docs.github.com/en/issues/planning-and-tracking-with-projects>`_
-helps to plan the work and monitor its progress.
-
-Multiple *GitHub Projects* are defined at https://github.com/orgs/eclipse-score/projects/.
-
-Beside one for each (committee, community, feature) Team, there is one for `Feature / Component Requests <https://github.com/orgs/eclipse-score/projects/4>`_
-and one for the complete `Roadmap <https://github.com/orgs/eclipse-score/projects/17>`_. Inside a GitHub Project, there is the possibility to generate different views
-for Table, Board and Roadmap supporting Backlogs, Open Point or Task Lists and other useful perspectives.
-
-.. image:: _assets/score_project_management_planning_overview.drawio.svg
-    :width: 900
-    :alt: Planning Overview
-    :align: center
-
-
-
-Kanban View
-"""""""""""
-The `GitHub Board <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-board-layout>`_ is supporting the Kanban View, enabling to set the Work In Progress Limits.
-
-.. image:: _assets/score_project_management_kanban.drawio.svg
-    :width: 900
-    :alt: Kanban View
-    :align: center
-
-
-Task List View
-""""""""""""""
-The `GitHub Table <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-table-layout>`_ is supporting the List View, enabling to adapt the priority by reordering the rows.
-
+New organization-wide labels shall only be introduced where a recurring
+cross-project classification need exists. The common label set is maintained
+centrally to avoid redundant or inconsistent classifications.
 Roadmap View
-""""""""""""
-The `GitHub Roadmap <https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout>`_ is supporting the Road View, provididing a high-level visualization of your project across a configurable timespan.
+^^^^^^^^^^^^
+
+Roadmap views provide a time-oriented representation of planned work and are
+used to visualize Product Increments, milestones, releases, and other
+time-dependent planning information.
+
 
 Traceability
-^^^^^^^^^^^^
-To achieve traceability all *Pull Requests* have to be `linked <https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue>`_
-to the corresponding *GitHub Issues*.
+~~~~~~~~~~~~
+
+Project work shall remain traceable from planning through implementation.
+
+Pull Requests shall therefore be linked to the GitHub Issues that authorize or
+track the corresponding change.
+
+Where hierarchical relationships exist, they shall be represented using the
+defined parent-child relationships. Cross-work-item dependencies shall be
+represented using the corresponding GitHub dependency mechanism.
+
+This provides traceability between:
+
+.. code-block:: text
+
+   Project / Release Planning
+             |
+             v
+     Product Increment
+             |
+             v
+            Epic
+             |
+             v
+            Task
+             |
+             v
+       Pull Request
+             |
+             v
+    Changed Work Product
+
 
 Planning of Work
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
-Generally, every team is responsible for planning its work within its own plan with the help of its :ref:`GitHub Project <pmp_pm_gh_projects>` filled with :ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>` and :ref:`Bugs <pmp_pm_bug>`.
+Planning follows a combination of bottom-up team planning and project-level
+coordination.
 
-The planning of :ref:`Feature Requests <pmp_pm_feature_request>` and :ref:`Component Requests <pmp_pm_component_request>` is in the responsibility of the :ref:`Architects <pmp_pm_arc>`,
-whereas the overall top-down plan is in the responsibility of the :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` with the help of :ref:`Product Increments <pmp_pm_product_increment>`,
-:ref:`Milestones <pmp_pm_milestone>` and :ref:`Releases <pmp_pm_release>`.
+Each Feature Team is responsible for planning the work within its scope using
+its ``GitHub Project``. Team plans consist primarily of
+:ref:`Epics <pmp_pm_epic>`, :ref:`Tasks <pmp_pm_task>`, and
+:ref:`Bugs <pmp_pm_bug>`.
+
+Architectural change requests, represented by
+:ref:`Feature Requests <pmp_pm_feature_request>` and
+:ref:`Component Requests <pmp_pm_component_request>`, are coordinated by the
+``Architecture Community``.
+
+Project-level planning is coordinated by the :term:`Project Lead Circle` using
+:ref:`Product Increments <pmp_pm_product_increment>`,
+:ref:`Milestones <pmp_pm_milestone>`, and
+:ref:`Releases <pmp_pm_release>`.
+
+This establishes the relationship between strategic project planning,
+architectural evolution, and team-level implementation planning.
 
 .. image:: _assets/score_project_management_process_issue_overview.drawio.svg
-    :width: 600
-    :alt: Planning Overview
-    :align: center
-
-
-
+   :width: 600
+   :alt: Planning Overview
+   :align: center
 
 Tracking Progress
-^^^^^^^^^^^^^^^^^
-The :ref:`Project / Technical Lead Circle <pmp_pm_plctlc>` regularly monitors the status of the work for upcoming Milestones and Releases in https://github.com/orgs/eclipse-score/projects/17/ based on
-:ref:`Product Increments <pmp_pm_product_increment>`.
+~~~~~~~~~~~~~~~~~
+
+Progress is monitored at both team and project level.
+
+Feature Teams regularly review the status of their planned work using their
+respective ``GitHub Project``.
+
+The :term:`Project Lead Circle` regularly reviews the overall project status
+against upcoming Product Increments, Milestones, and Releases using the
+project-wide roadmap.
+
+The review shall identify, where applicable:
+
+* work that is behind plan;
+* unresolved dependencies or blockers;
+* Product Increments at risk;
+* milestone or release deviations; and
+* issues requiring escalation.
 
 
 Dashboards
-""""""""""
+^^^^^^^^^^
 
-GitHub offers mechanism in form of charts to track issues:
+GitHub Project insights and charts are used to provide aggregated views of
+project progress and work-item status.
 
-- `Product Increments Open last 3 months <https://github.com/orgs/eclipse-score/projects/17/insights/4>`_
+Dashboards complement the underlying Issues and GitHub Projects and may be used
+to monitor trends, open work, completion status, and progress towards upcoming
+milestones and releases.
+
+
+Escalation
+----------
+
+Issues shall initially be resolved within the organizational unit responsible
+for the affected work.
+
+If an issue cannot be resolved at that level, it shall be escalated according
+to the project organization:
+
+.. code-block:: text
+
+   Individual / Work Item
+           |
+           v
+      Feature Team
+           |
+           v
+   Community / Cross-Team Coordination
+           |
+           v
+   Project Lead Circle
+
+Technical or architectural topics shall be escalated through the applicable
+technical governance structure.
+
+Project planning, organizational, resource, or schedule topics shall be
+escalated through the applicable project management governance structure.
+
+Escalations that affect project scope, milestones, releases, or organizational
+responsibilities shall be documented in the corresponding project records and,
+where further work is required, represented by an appropriate GitHub Issue.

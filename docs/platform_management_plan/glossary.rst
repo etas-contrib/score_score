@@ -80,7 +80,7 @@ PMP Terms
       Role responsible for coordinating functional safety activities,
       tailoring, planning, and safety-related reviews.
 
-   Project Lead Circle (PLC/TLC)
+   Project Lead Circle
       Steering body for strategic technical and project decisions, including
       release planning, repository scope, and escalations.
 
