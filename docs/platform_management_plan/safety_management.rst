@@ -12,7 +12,7 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Platform Safety Management Plan
+.. document:: PF Safety Management Plan
    :id: doc__platform_safety_management_plan
    :status: draft
    :version: 3
