@@ -1040,6 +1040,7 @@ For each deviation, the following information shall be documented:
 - required approval or disposition;
 - planned resolution, where required; and
 - status of the deviation.
+
 A deviation shall not be considered closed solely because it has been
 documented.
 
