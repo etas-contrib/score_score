@@ -18,7 +18,7 @@
    :version: 5
    :safety: ASIL_B
    :security: YES
-   :tags: platform_management
+   :tags: platform_management_plan
    :realizes: wp__document_mgt_plan[version==1]
 
 PF Documentation Management Plan

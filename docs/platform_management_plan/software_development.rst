@@ -21,7 +21,7 @@
    :safety: ASIL_B
    :security: YES
    :realizes: wp__sw_development_plan[version==1]
-   :tags: platform_management
+   :tags: platform_management_plan
 
 .. _sw_development:
 

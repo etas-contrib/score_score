@@ -19,7 +19,7 @@
    :safety: ASIL_B
    :security: YES
    :realizes: wp__project_mgt[version==1]
-   :tags: platform_management
+   :tags: platform_management_plan
 
 .. _pmp_pm_plan:
 

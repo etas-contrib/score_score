@@ -18,7 +18,7 @@
    :version: 4
    :safety: ASIL_B
    :security: YES
-   :tags: platform_management
+   :tags: platform_management_plan
    :realizes: wp__chm_plan[version==1]
 
 .. _change_mgmt_plan:

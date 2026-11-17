@@ -18,7 +18,7 @@
    :version: 2
    :safety: ASIL_B
    :security: YES
-   :tags: platform_management
+   :tags: platform_management_plan
    :realizes: wp__tlm_plan[version==1]
 
 

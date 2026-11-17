@@ -19,7 +19,7 @@
    :safety: ASIL_B
    :security: NO
    :realizes: wp__platform_safety_plan[version==1], wp__safety_tailoring[version==1]
-   :tags: platform_management
+   :tags: platform_management_plan
 
 
 .. _platform_safety_management_plan:

@@ -18,7 +18,7 @@
    :version: 2
    :safety: ASIL_B
    :security: NO
-   :tags: platform_management
+   :tags: platform_management_plan
    :realizes: wp__platform_sw_release_plan[version==1]
 
 PF Release Management Plan

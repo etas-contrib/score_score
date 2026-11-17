@@ -19,7 +19,7 @@
    :safety: ASIL_B
    :security: YES
    :realizes: wp__platform_mgmt[version==1]
-   :tags: platform_management
+   :tags: platform_management_plan
 
 Platform Management Plan
 ========================
@@ -28,7 +28,7 @@ Platform Management Plan
 
 .. toctree::
    :maxdepth: 1
-   :caption: Content
+   :caption: Contents
 
    project_management
    safety_management
@@ -53,3 +53,11 @@ Platform Management Plan
    role_assignment/platform_safety_manager
    role_assignment/platform_security_manager
    role_assignment/platform_quality_manager
+
+
+
+.. needtable:: PF Management Plan
+    :style: table
+    :columns: title;version;status;safety;security;id
+    :filter: "platform_management_plan" in tags
+    :sort: title
