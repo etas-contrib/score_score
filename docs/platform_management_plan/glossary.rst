@@ -12,17 +12,17 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-.. document:: Platform Management Glossary
-   :id: doc__platform_management_glossary
+.. document:: PMP Glossary
+   :id: doc__platform_management_plan_glossary
    :status: draft
    :version: 1
    :safety: ASIL_B
    :security: YES
-   :tags: platform_management
+   :tags: platform_management_plan
    :realizes: wp__project_mgt[version==1]
 
-Glossary
-========
+PMP Glossary
+============
 
 This glossary collects terms used in the Platform Management Plan (PMP) and
 shared terms used across the S-CORE workspace.
