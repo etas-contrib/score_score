@@ -227,10 +227,11 @@ in https://github.com/eclipse-score/score/issues/870.
    * - blocker
      - ``blocker``
 
-:need:`[[title]] <gd_req__problem_attr_safety_affected>` and
+:need:`[[title]] <gd_req__problem_attr_safety_affected>`
+   and
+
 :need:`[[title]] <gd_req__problem_attr_security_affected>`
-   Safety and security relevance are documented in the **Category** section of
-   the ISSUE.
+   Safety and Security relevance are documented in the **Category** section of the ISSUE.
 
 Multiple categories may apply. If neither safety nor security relevance is
 selected, the problem is treated as quality-related by default.
